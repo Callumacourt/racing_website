@@ -1,5 +1,5 @@
 import App from "./src/App"
-import About from "./src/About"
+import About from "./src/components/About/About"
 
 const routes = [
   {
