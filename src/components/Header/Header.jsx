@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './Header.module.css'
+import TeamLogo from '../../assets/logo_glow.png'
 import MobileHeader from './MobileHeader';
 import InstaLogo from '../../assets/instagram.svg'
 import LinkedinLogo from '../../assets/linkedin.svg'
@@ -23,7 +24,7 @@ function Header () {
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>
-                <img src="" alt="Logo" />
+                <img className = {styles.teamLogo} src={TeamLogo} alt="Cardiff University Team Logo" />
                 <div className={styles.links}>
                     <p>Home</p>
                     <p>Team History</p>
