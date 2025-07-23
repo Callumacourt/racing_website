@@ -14,6 +14,9 @@ function Hero () {
                 src={carImg} 
                 alt="An image of an autonomous race car" 
                 />
+                <section className={styles.titleText}>
+                    <p>Cardiff Autonomous Racing</p>
+                </section>
             </main>
             <section className={styles.infoSection}>
                 <h2>Who are we?</h2>

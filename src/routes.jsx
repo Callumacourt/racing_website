@@ -1,6 +1,5 @@
 import Layout from "./Layout"
 import App from "./App"
-import About from "./components/About/About"
 import Contact from './Pages/Contact'
 import Gallery from './Pages/Gallery'
 import Sponsorship from './Pages/Sponsorship'
@@ -14,10 +13,6 @@ const routes = [
       {
         index: true,
         element: <App />
-      },
-      {
-        path: 'about',
-        element: <About />
       },
       {
         path: 'contact',

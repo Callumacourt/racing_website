@@ -33,9 +33,6 @@ function MobileHeader() {
                 <nav className={styles.mobileNav}>
                     <button onClick={handleToggle}>☰</button>
                 </nav>
-                <section className={styles.titleText}>
-                    <p>Cardiff Autonomous Racing</p>
-                </section>
             </header>
             {isActive && <MobileDropdown setIsActive={handleClose} isExiting={isExiting} />}
         </>
