@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+.footer {
+    background-color: white;
+    color: black;
+    padding: 5%;
+    font-family: 'Inter', sans-serif;
+}
+
+.footerMiddle {
+    display: flex;
+    align-items: flex-start;
+}
+
+.brandText {
+    margin-left: 5vw;
+    text-align: start;
+}
+
+.brandText .copyright {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.brandText .tagline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.brandSection {
+    display: flex;
+    padding-bottom: 2vh;
+}
+
+.footerNav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: start;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 20%;
+}
+
+.footerNav p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.navLink {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #34495e;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.navLink:hover {
+    color: #ff6b6b;
+}
+
+.rightSection {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.logoRow {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.logoRow img, .teamLogo, .uniLogo {
+    height: 60px; 
+}
+
+
+.socialSection {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.socialIcon {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s ease;
+}
+
+.socialIcon:hover {
+    transform: scale(1.1);
+}
