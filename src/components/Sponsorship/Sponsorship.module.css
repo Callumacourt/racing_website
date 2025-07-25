@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+/* === Base styles === */
+.sponsorWrapper {
+    background-color: #1a1a2e;
+    color: white;
+    text-align: start;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding-bottom: 5vh;
+}
+
+.sponsorWrapper p {
+    margin-bottom: 1vh;
+}
+
+/* === Hero === */
+.hero {
+    height: 100vh;
+    position: relative;
+}
+
+.hero h2 {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    z-index: 2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.imgContainer {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.imgContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* === Content sections === */
+.pitchSection,
+.tierSection,
+.previousSponsors,
+.contactSection {
+    padding-inline: 2vw;
+}
+
+.pitchSection {
+    padding-top: 1vh;
+}
+
+.pitchSection h4 {
+    margin-top: 4vh;
+}
+
+.pitchSection p {
+    margin-bottom: 4vh;
+}
+
+.contactSection {
+    padding-top: 2.5vh;
+}
+
+/* === Sponsor list === */
+.sponsorList {
+    list-style: none;
+    padding: 0;
+}
+
+.sponsorList li {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.sponsorList img {
+    justify-self: center;
+}
+
+.sponsorList li p {
+    grid-column: 2;
+    margin-bottom: 4vh;
+}
+
+/* === Tier section === */
+.tierSection section {
+    padding: 0 2vw 0 2vw;
+}
+
+.tierSection ul {
+    margin-bottom: 2.5vh;
+}
+
+.tierSection li, hr {
+    margin: 2vh 0 2vh;
+}
+
+.tierSubtext {
+    font-size: 0.8rem;
+    padding-top: 0.5vh;
+}
+
+/* === Tier colours === */
+.bronzeHr {
+    background-color: #c2885c;
+}
+
+.silverHr {
+    background-color: #b0b0b0;
+}
+
+.goldHr {
+    background-color: #d4af37;
+}
+
+.tierOne h5 {
+    color: #c2885c;
+}
+
+.tierTwo h5 {
+    color: #b0b0b0;
+}
+
+.tierThree h5 {
+    color: #d4af37;
+}

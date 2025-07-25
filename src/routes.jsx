@@ -1,9 +1,9 @@
 import Layout from "./Layout"
 import App from "./App"
-import Contact from './Pages/Contact'
-import Gallery from './Pages/Gallery'
-import Sponsorship from './Pages/Sponsorship'
-import TeamHistory from './Pages/TeamHistory'
+import ContactPage from './Pages/ContactPage'
+import GalleryPage from './Pages/GalleryPage'
+import SponsorPage from './Pages/SponsorPage'
+import TeamHistoryPage from './Pages/TeamHistoryPage'
 
 const routes = [
   {
@@ -16,19 +16,19 @@ const routes = [
       },
       {
         path: 'contact',
-        element: <Contact />
+        element: <ContactPage />
       },
       {
         path: 'gallery',
-        element: <Gallery />
+        element: <GalleryPage />
       },
       {
         path: 'sponsorship',
-        element: <Sponsorship />
+        element: <SponsorPage />
       },
       {
         path: 'teamhistory',
-        element: <TeamHistory />
+        element: <TeamHistoryPage />
       }
     ]
   }
