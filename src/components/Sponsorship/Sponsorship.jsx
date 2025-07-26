@@ -1,9 +1,9 @@
 import styles from './Sponsorship.module.css'
-import codingPhoto from '../../assets/codingPhotoR.jpg'
-import teamPhoto from '../../assets/teamPhoto.jpg'
-import truck from '../../assets/truck.svg'
-import cpu from '../../assets/cpu.svg'
-import hardDrive from '../../assets/hard-drive.svg'
+import codingPhoto from '../../assets/images/team/general/codingPhotoR.jpg'
+import teamPhoto from '../../assets/images/team/general/teamPhoto.jpg'
+import truck from '../../assets/images/icons/truck.svg'
+import cpu from '../../assets/images/icons/cpu.svg'
+import hardDrive from '../../assets/images/icons/hard-drive.svg'
 import SponsorForm from './SponsorForm'
 
 function Sponsorship () {

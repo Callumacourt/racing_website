@@ -1,5 +1,5 @@
 import styles from './MobileHeader.module.css'
-import closeButton from '../../assets/x.svg'
+import closeButton from '../../assets/images/icons/x.svg'
 import { Link } from 'react-router-dom'
 
 function MobileDropdown ({ setIsActive, isExiting }) {

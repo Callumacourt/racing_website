@@ -1,9 +1,9 @@
-import carImg from '../../assets/carimg.jpg'
+import carImg from '../../assets/images/team/general/carimg.jpg'
 import styles from './Hero.module.css'
-import perceptionImg from '../../assets/perceptionImg2.jpg'
-import pathImg from '../../assets/pathPlanning.jpg'
-import controlImg from  '../../assets/controlImg.jpg'
-import businessImg from '../../assets/businessImg2.jpg'
+import perceptionImg from '../../assets/images/diagrams/perceptionImg2.jpg'
+import pathImg from '../../assets/images/diagrams/pathPlanning.jpg'
+import controlImg from  '../../assets/images/diagrams/controlImg.jpg'
+import businessImg from '../../assets/images/diagrams/businessImg2.jpg'
 
 function Hero () {
     return (

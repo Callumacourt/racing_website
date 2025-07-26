@@ -1,8 +1,8 @@
 import styles from './Footer.module.css';
-import logo from '.././assets/logo_glow.png'
-import uniLogo from '.././assets/cardiffUniWhite.jpg'
-import linkedin from '.././assets/linkedin.svg'
-import instagram from '.././assets/instagram.svg'
+import logo from '../../assets/images/logos/logo_glow.png'
+import uniLogo from '../../assets/images/logos/cardiffUniWhite.jpg'
+import linkedin from '../../assets/images/icons/linkedin.svg'
+import instagram from '../../assets/images/icons/instagram.svg'
 import { Link } from 'react-router-dom';
 
 function Footer () {

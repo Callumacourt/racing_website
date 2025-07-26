@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import styles from './Header.module.css'
-import TeamLogo from '../../assets/logo_glow.png'
+import TeamLogo from '../../assets/images/logos/logo_glow.png'
 import MobileHeader from './MobileHeader';
-import InstaLogo from '../../assets/instagram.svg'
-import LinkedinLogo from '../../assets/linkedin.svg'
+import InstaLogo from '../../assets/images/icons/instagram.svg'
+import LinkedinLogo from '../../assets/images/icons/linkedin.svg'
 
 function Header () {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
