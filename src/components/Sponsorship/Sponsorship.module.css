@@ -52,7 +52,7 @@
 .tierSection,
 .previousSponsors,
 .contactSection {
-    padding-inline: 2vw;
+    padding-inline: 4vw;
 }
 
 .pitchSection {
@@ -102,8 +102,13 @@
     margin-bottom: 2.5vh;
 }
 
-.tierSection li, hr {
-    margin: 2vh 0 2vh;
+.tierSection li {
+    margin: 2vh 0 4vh;
+}
+
+.tierSection hr {
+    margin: 4vh 0 4vh 0;
+    height: 0.2rem;
 }
 
 .tierSubtext {
@@ -134,4 +139,10 @@
 
 .tierThree h5 {
     color: #d4af37;
+}
+
+/* === Form section === */
+
+.formSection {
+    padding: 2vh 4vw;
 }

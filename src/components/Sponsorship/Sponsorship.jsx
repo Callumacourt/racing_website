@@ -4,6 +4,7 @@ import teamPhoto from '../../assets/teamPhoto.jpg'
 import truck from '../../assets/truck.svg'
 import cpu from '../../assets/cpu.svg'
 import hardDrive from '../../assets/hard-drive.svg'
+import SponsorForm from './SponsorForm'
 
 function Sponsorship () {
     return (
@@ -105,6 +106,14 @@ function Sponsorship () {
             </li>
         </ul>
     </section>
+</section>
+<section className = {styles.formSection}>
+<h3>Interested in sponsoring us?</h3>
+<small>
+    Thank you for your interest, please enter your details below and we'll 
+    get back to you as soon as we can
+</small>
+<SponsorForm/>
 </section>
     </main>
     ) 
