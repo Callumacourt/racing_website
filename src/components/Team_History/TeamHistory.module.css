@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap');
+
+.teamHistoryWrapper {
+    text-align: left;
+    color: white;
+    background-color: #1a1a2e;
+    padding-inline: 4vw;
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 4vh;
+}
+
+.teamHistoryWrapper h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2vh;
+}
+
+.teamHistoryWrapper h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+
+.teamHistoryWrapper h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: lightblue;
+    margin-top: 0;
+    letter-spacing: -0.01em;
+}
+
+.teamHistoryWrapper p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #e8e8e8;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  margin: 0;
+  border-left: 2px dotted #ccc;
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: -10px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border: 3px solid #007bff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timelineContent {
+  margin-left: 20px;
+}
+
+.timelineContent span {
+  display: flex;
+  gap: 2vw;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.yearHeader {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 2vh;
+}
+
+
+@media (max-width: 768px) {
+  .timelineItem {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timelineContentLeft,
+  .timelineContentRight {
+    display: block !important;
+    text-align: left;
+    width: 100%;
+  }
+}

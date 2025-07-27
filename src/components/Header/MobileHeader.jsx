@@ -1,10 +1,28 @@
 import styles from './MobileHeader.module.css'
 import MobileDropdown from './MobileDropdown';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 function MobileHeader() {
     const [isActive, setIsActive] = useState(false)
     const [isExiting, setIsExiting] = useState(false)
+
+    // Stop scroll when modal active
+
+    useEffect (() => {
+        if (isActive) {
+            document.body.style.overflow = 'hidden'
+            document.documentElement.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+            document.documentElement.style.overflow = ''
+        }
+
+        return () => {
+            document.body.style.overflow = ''
+            document.documentElement.style.overflow = ''
+        }
+    }, [isActive])
 
     const handleToggle = () => {
         if (isActive) {
