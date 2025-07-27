@@ -1,0 +1,32 @@
+{
+    "camp": {
+        "alt": "Team leader Morgan sat on a camping chair facing the sun"
+    },
+    "working": {
+        "alt": "Two members of the team focusing intently on their laptops"
+    },
+    "working2":{
+        "alt": "The team leader observing some members of the team working on their laptops, the team leader is in focus and the team members blurry"
+    },
+    "teamWorking": {
+        "alt": "A team photo of all team members sat around a table with their laptops smiling at the camera"
+    },
+    "ritvikPres": {
+        "alt": "A perception team member giving a presentation to judges on our autonomous system design, with a powerpoint behind him that contains diagrams of our design structure"
+    },
+    "carSim": {
+        "alt": "A POV photo of one of the team members perspectives as they work from their laptop, showing a car simulator on their screen with team members present in the background"
+    },
+    "hall": {
+        "alt": "A busy hall full of benches and populated by different teams, a presentation screen at the front with 'Formula Student' written on it"
+    },
+    "teamPhoto" : {
+        "alt": "A photo of 24/25 team for Cardiff Autonomous Racing standing by an autonomous race car on the silverstone track"
+    },
+    "recruitment": {
+        "alt": "Team members sat in a seminar room conversing at different desks"
+    },
+    "business": {
+        "alt": "A member of the business team giving a presentation, with a graph projected on the board behind him"
+    }
+}

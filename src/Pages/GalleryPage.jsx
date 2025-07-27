@@ -1,10 +1,8 @@
+import Gallery from "../components/Gallery/Gallery";
+
 function GalleryPage () {
     return (
-        <>
-            <main>
-                
-            </main>
-        </>
+        <Gallery/>
     )
 }
 
