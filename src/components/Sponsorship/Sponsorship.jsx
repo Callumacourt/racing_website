@@ -62,7 +62,7 @@ function Sponsorship () {
     <h4>Sponsorship Tiers</h4>
     <p className={styles.tierSubtext}><em>Each subsequent tier contains the previous tier(s) material</em></p>
     
-    <hr  class = {styles.bronzeHr}/>
+    <hr  className = {styles.bronzeHr}/>
     <section className={styles.tierOne}>
         <h5>Tier One</h5>
         <p className={styles.tierPrice}>This package is for sponsorship worth up to £250</p>

@@ -16,7 +16,7 @@ function TeamHistory () {
                     2024-2025
                     <img src={collapseIcn} alt="Collapse Icon" />
                 </span>
-                <div className={styles.timeline}>
+                <section className={styles.timeline}>
                 
                 <div className={styles.timelineItem}>
                     <div className={styles.timelineMarker}></div>
@@ -94,8 +94,7 @@ function TeamHistory () {
                         </p>
                     </div>
                 </div>
-                
-                </div>
+                </section>
                 </section>
             </main>
         </>

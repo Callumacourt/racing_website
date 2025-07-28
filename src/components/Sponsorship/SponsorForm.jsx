@@ -1,46 +1,28 @@
 import { useState } from "react";
 import styles from './SponsorForm.module.css'
+import FormInput from '../Form/FormInput';
+import UseFormHandler from "../../hooks/UseFormHandler";
 
 function SponsorForm () {
 
-  const [formDetails, setFormDetails] = useState({
-    companyName: '',
-    contactName: '',
-    contactEmail: '',
-    contactNumber: '',
-  });
+  const {
+    formDetails,
+      formErrors,
+      handleFormChange,
+      validateForm,
+      isSubmitting,
+      hasSubmitted,
+      setIsSubmitting,
+      setHasSubmitted,
+      resetForm
+  } = UseFormHandler(['companyName', 'contactName', 'contactEmail', 'contactNumber'])
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [hasSubmitted, setHasSubmitted] = useState(false)
-  
+
   /* For mocking backend email send wait time - will remove when writing backend*/
   const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-  const [formErrors, setFormErrors] = useState({
-    companyNameErr: '',
-    contactNameErr: '',
-    contactEmailErr: '',
-    contactNumErr: '',
-  })
 
-  const handleFormChange = (param, value) => {
-    setFormDetails(prev => ({
-      ...prev,
-      [param]: value,
-    }));
-
-    if (hasSubmitted && formErrors[param + 'Err']) {
-        setFormErrors(prev => ({
-            ...prev,
-            [param + 'Err']: ''
-        }));
-    } 
-    if (hasSubmitted) {
-      setHasSubmitted(false)
-    }
-  };
-
-  const validateForm = () => {
+/*const validateForm = () => {
         const errors = {};
 
         if (!formDetails.companyName.trim()) {
@@ -63,6 +45,7 @@ function SponsorForm () {
         setFormErrors(errors);
         return Object.keys(errors).length === 0;
    }
+        */
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -81,74 +64,57 @@ function SponsorForm () {
 
     setIsSubmitting(true)
     await(wait(1000))
-    setHasSubmitted(true);
-    setIsSubmitting(false)
-
     /* Reset form details */
-    setFormDetails ({
-      companyName: '',
-      contactName: '',
-      contactEmail: '',
-      contactNumber: '',
-    })
+    setHasSubmitted(true)
+    resetForm()
   };
 
   return (
     <form className = {styles.sponsorForm} onSubmit={handleSubmit} noValidate>
-      <label htmlFor="companyName">Company Name</label>
-      <input 
-        id="companyName"
-        name="companyName"
-        type="text"
-        value={formDetails.companyName}
-        onChange={(e) => handleFormChange('companyName', e.target.value)}
-        className={formErrors.companyNameErr ? styles.inputError : ''}
-        required
-      />
-      <small className={formErrors.companyNameErr ? styles.activeErr : styles.hiddenErr}>
-        <i>{formErrors.companyNameErr}</i>
-      </small>
 
-      <label htmlFor="contactName">Contact Name</label>
-      <input
-        id="contactName"
-        name="contactName"
-        type="text"
-        value={formDetails.contactName}
-        onChange={(e) => handleFormChange('contactName', e.target.value)}
-        className={formErrors.contactNameErr ? styles.inputError : ''}
-        required
+      <FormInput 
+        name = {'companyName'} 
+        label = {'Company Name'}
+        type = {'text'} 
+        value = {formDetails.companyName} 
+        onChange = {handleFormChange}
+        error = {formErrors.companyNameErr}
+        required = {true}
+        styles = {styles}
       />
-      <small className={formErrors.contactNameErr ? styles.activeErr: styles.hiddenErr}>
-        <i>{formErrors.contactNameErr}</i>
-      </small>
 
-      <label htmlFor="contactEmail">Contact Email</label>
-      <input
-        id="contactEmail"
-        name="contactEmail"
-        type="email"
-        value={formDetails.contactEmail}
-        onChange={(e) => handleFormChange('contactEmail', e.target.value)}
-        className={formErrors.contactEmailErr ? styles.inputError : ''}
-        required
+      <FormInput 
+        name = {'contactName'} 
+        label = {'Contact Name'}
+        type = {'text'} 
+        value = {formDetails.contactName} 
+        onChange = {handleFormChange}
+        error = {formErrors.contactNameErr}
+        required = {true}
+        styles = {styles}
       />
-      <small className={formErrors.contactEmailErr ? styles.activeErr : styles.hiddenErr}>
-        <i>{formErrors.contactEmailErr}</i>
-      </small>
 
-      <label htmlFor="contactNumber">Contact Number</label>
-      <input
-        id="contactNumber"
-        name="contactNumber"
-        type="tel"
-        value={formDetails.contactNumber}
-        onChange={(e) => handleFormChange('contactNumber', e.target.value)}
-        className={formErrors.contactNumErr ? styles.inputError : ''}
+      <FormInput 
+        name = {'contactEmail'} 
+        label = {'Contact Email'}
+        type = {'email'} 
+        value = {formDetails.contactEmail} 
+        onChange = {handleFormChange}
+        error = {formErrors.contactEmailErr}
+        required = {true}
+        styles = {styles}
       />
-      <small className={formErrors.contactNumErr ? styles.activeErr : styles.hiddenErr}>
-        <i>{formErrors.contactNumErr}</i>
-      </small>
+
+      <FormInput 
+        name = {'contactNumber'} 
+        label = {'Contact Number'}
+        type = {'tel'} 
+        value = {formDetails.contactNumber} 
+        onChange = {handleFormChange}
+        error = {formErrors.contactNumErr}
+        required = {false}
+        styles = {styles}
+      />
 
       {/* Honeypot input for bots */}
       <input 
@@ -165,6 +131,7 @@ function SponsorForm () {
         type="submit"
         disabled = {isSubmitting}
       >{isSubmitting ? <div className = {styles.spinner} aria-label="Loading.."></div> : 'Submit'}</button>
+      
       {hasSubmitted && (
         <div className={styles.successMessage}>
           <svg 
