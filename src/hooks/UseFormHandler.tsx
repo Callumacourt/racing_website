@@ -1,19 +1,19 @@
 import { useState } from "react";
 
-function UseFormHandler (fieldnames) {
+function UseFormHandler (fieldnames: string[]) {
 
-    const [formDetails, setFormDetails] = useState (
+    const [formDetails, setFormDetails] = useState<Record<string, string>> (
         Object.fromEntries(fieldnames.map(name => [name, '']))
     );
 
-    const [formErrors, setFormErrors] = useState (
+    const [formErrors, setFormErrors] = useState<Record<string, string>> (
         Object.fromEntries(fieldnames.map(name => [name + 'Err', '']))
     )
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [hasSubmitted, setHasSubmitted] = useState(false);
     
-    function handleFormChange (field, value) {
+    function handleFormChange (field: string, value: string) {
         setFormDetails (prev =>({...prev, [field]: value}));
 
         if (formErrors[field + 'Err']) {
@@ -26,7 +26,7 @@ function UseFormHandler (fieldnames) {
     }
 
     function validateForm (requiredFields = fieldnames) {
-        const errors = {}
+        const errors : Record<string, string> = {};
 
         console.log(`formfields ${requiredFields}`)
         

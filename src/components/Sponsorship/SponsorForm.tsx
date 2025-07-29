@@ -1,7 +1,8 @@
 import styles from './SponsorForm.module.css'
-import FormInput from '../Form/FormInput';
+import FormInput from '../Form/FormInput.js';
 import FormEnd from '../Form/FormEnd'
 import UseFormHandler from "../../hooks/UseFormHandler";
+import { FormEvent } from 'react';
 
 function SponsorForm () {
 
@@ -19,13 +20,14 @@ function SponsorForm () {
 
 
   /* For mocking backend email send wait time - will remove when writing backend*/
-  const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  const wait = (ms: number) : Promise<void> => 
+    new Promise(resolve => setTimeout(resolve, ms));
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     /* Ignore bot submissions */
-    const honeyPot = e.target.companyWebsite.value;
+    const honeyPot = (e.currentTarget.elements.namedItem('companyWebsite') as HTMLInputElement)?.value;
     if (honeyPot) {
       return
     }
@@ -55,7 +57,7 @@ function SponsorForm () {
         onChange = {handleFormChange}
         error = {formErrors.companyNameErr}
         required = {true}
-        styles = {styles}
+        kind='input'
       />
 
       <FormInput 
@@ -66,7 +68,7 @@ function SponsorForm () {
         onChange = {handleFormChange}
         error = {formErrors.contactNameErr}
         required = {true}
-        styles = {styles}
+        kind='input'
       />
 
       <FormInput 
@@ -77,7 +79,7 @@ function SponsorForm () {
         onChange = {handleFormChange}
         error = {formErrors.contactEmailErr}
         required = {true}
-        styles = {styles}
+        kind='input'
       />
 
       <FormInput 
@@ -88,7 +90,7 @@ function SponsorForm () {
         onChange = {handleFormChange}
         error = {formErrors.contactNumberErr}
         required = {false}
-        styles = {styles}
+        kind='input'
       />
 
       {/* Honeypot input for bots */}
@@ -96,7 +98,7 @@ function SponsorForm () {
         type="text" 
         name="companyWebsite"
         style={{display: 'none'}}
-        tabIndex="-1"
+        tabIndex={-1}
         autoComplete="off"
         aria-hidden = 'true'
       />

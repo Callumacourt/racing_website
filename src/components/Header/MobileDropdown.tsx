@@ -2,7 +2,7 @@ import styles from './MobileHeader.module.css'
 import closeButton from '../../assets/images/icons/x.svg'
 import { Link } from 'react-router-dom'
 
-function MobileDropdown ({ setIsActive, isExiting }) {
+function MobileDropdown ({ setIsActive, isExiting } : {setIsActive : () => void, isExiting: boolean }) {
     const dropdownClass = isExiting 
         ? `${styles.mobileDropdown} ${styles.mobileDropdownExit}`
         : styles.mobileDropdown

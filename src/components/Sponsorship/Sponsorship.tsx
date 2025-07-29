@@ -10,7 +10,7 @@ function Sponsorship () {
     return (
     <main className = {styles.sponsorWrapper}>
         <section className={styles.hero}>
-        <h2 className >Partner With Us</h2>
+        <h2>Partner With Us</h2>
             <div className={styles.imgContainer}>
                 <img src={codingPhoto} alt="A photo of a man at a computer" />
             </div>

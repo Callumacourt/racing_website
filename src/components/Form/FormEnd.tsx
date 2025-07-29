@@ -1,6 +1,13 @@
 import styles from './GeneralForm.module.css'
 
-function FormEnd ({hasSubmitted, isSubmitting}) {
+function FormEnd ({
+    hasSubmitted, 
+    isSubmitting
+    } : {
+    hasSubmitted : boolean;
+    isSubmitting: boolean
+    }) 
+    {
     return (
         <>
           <button 

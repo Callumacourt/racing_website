@@ -17,12 +17,12 @@ function ContactForm () {
         resetForm
     } = UseFormHandler(['fullName', 'email', 'message'])
 
-    const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const honeyPot = e.target.mobile.value;
+        const honeyPot = (e.currentTarget.elements.namedItem('mobile') as HTMLInputElement | null)?.value || '';
         if (honeyPot) {
             return
         }
@@ -64,7 +64,7 @@ function ContactForm () {
             type="text" 
             name="mobile"
             style={{display: 'none'}}
-            tabIndex="-1"
+            tabIndex={-1}
             autoComplete="off"
             aria-hidden = 'true'
             />
@@ -72,6 +72,7 @@ function ContactForm () {
             <FormInput
                 name={'message'}
                 label={'Enquiry'}
+                type='text'
                 kind={'textarea'}
                 value={formDetails.message}
                 error = {formErrors.messageErr}
