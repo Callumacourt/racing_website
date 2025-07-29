@@ -1,6 +1,6 @@
-import { useState } from "react";
 import styles from './SponsorForm.module.css'
 import FormInput from '../Form/FormInput';
+import FormEnd from '../Form/FormEnd'
 import UseFormHandler from "../../hooks/UseFormHandler";
 
 function SponsorForm () {
@@ -21,32 +21,6 @@ function SponsorForm () {
   /* For mocking backend email send wait time - will remove when writing backend*/
   const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-
-/*const validateForm = () => {
-        const errors = {};
-
-        if (!formDetails.companyName.trim()) {
-            errors.companyNameErr = '*Your company name is required';
-        }
-
-        if (!formDetails.contactName.trim()) {
-            errors.contactNameErr = '*A contact name is required'
-        }
-
-        if (!formDetails.contactEmail.trim()) {
-            errors.contactEmailErr = '*A contact email is required'
-        } else if (!/\S+@\S+\.\S+/.test(formDetails.contactEmail)) {
-            errors.contactEmailErr = 'Please enter a valid email';
-        }
-            
-        if (formDetails.contactNumber && !/^\d{10,}$/.test(formDetails.contactNumber.replace(/\D/g, ''))) {
-            errors.contactNumErr = '*Please enter a valid phone number';
-        }
-        setFormErrors(errors);
-        return Object.keys(errors).length === 0;
-   }
-        */
-
   const handleSubmit = async(e) => {
     e.preventDefault();
 
@@ -56,7 +30,7 @@ function SponsorForm () {
       return
     }
 
-    if (validateForm()) {
+    if (validateForm(['companyName', 'contactName', 'contactEmail'])) {
         console.log('Form submitted')
     } else {
       return
@@ -66,6 +40,7 @@ function SponsorForm () {
     await(wait(1000))
     /* Reset form details */
     setHasSubmitted(true)
+    setIsSubmitting(false)
     resetForm()
   };
 
@@ -111,7 +86,7 @@ function SponsorForm () {
         type = {'tel'} 
         value = {formDetails.contactNumber} 
         onChange = {handleFormChange}
-        error = {formErrors.contactNumErr}
+        error = {formErrors.contactNumberErr}
         required = {false}
         styles = {styles}
       />
@@ -123,36 +98,10 @@ function SponsorForm () {
         style={{display: 'none'}}
         tabIndex="-1"
         autoComplete="off"
+        aria-hidden = 'true'
       />
 
-      <button 
-        className = {styles.submitBtn}
-        aria-label="Form submit" 
-        type="submit"
-        disabled = {isSubmitting}
-      >{isSubmitting ? <div className = {styles.spinner} aria-label="Loading.."></div> : 'Submit'}</button>
-      
-      {hasSubmitted && (
-        <div className={styles.successMessage}>
-          <svg 
-            className={styles.checkIcon}
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="white" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <polyline 
-              className={styles.checkPath}
-              points="20 6 9 17 4 12"
-            />
-          </svg>
-          <span className = {styles.thankYouText}>Thank you! We'll be in touch soon.</span>
-        </div>
-      )}
+      <FormEnd hasSubmitted = {hasSubmitted} isSubmitting = {isSubmitting}/>
     </form>
   );
 }

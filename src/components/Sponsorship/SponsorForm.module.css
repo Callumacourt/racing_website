@@ -1,4 +1,3 @@
-
 .sponsorForm {
     display: flex;
     flex-direction: column;
@@ -6,67 +5,3 @@
     position: relative; 
 }
 
-.submitBtn {
-    border-radius: 20px;
-    padding: 1vh 2vw;
-    margin-top: 1vh;
-    margin-bottom: 0; 
-    font-size: 1.1rem;
-    height: 48px; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 100px; 
-    box-sizing: border-box; 
-    border: none; 
-}
-
-.spinner {
-    width: 24px;
-    height: 24px;
-    border: 3px solid #ccc;
-    border-top: 3px solid #333;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin: auto;
-}
-
-.successMessage {
-    height: 1rem;
-    margin-top: 1vh;
-    display: flex;
-    opacity: 0;
-    transform: translate(20px);
-    animation: fadeSlideIn 0.6s ease-out forwards;
-}
-
-.checkIcon {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-}
-
-.checkPath {
-    stroke-dasharray: 30;
-    stroke-dashoffset: -30;
-    animation: drawCheck 0.8s ease-out forwards;
-}
-
-@keyframes fadeSlideIn {
-    to {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes drawCheck {
-    to {
-        stroke-dashoffset: 0;
-    }
-}

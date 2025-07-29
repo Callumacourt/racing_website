@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 .footer {
-    background-color: white;
+    background-color: var(--color-white);
     color: black;
     padding: 5%;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
 }
 
 .footerMiddle {
@@ -18,14 +18,14 @@
 }
 
 .brandText .copyright {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
     font-weight: 500;
     font-size: 1rem;
     color: #2c3e50;
 }
 
 .brandText .tagline {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
     font-weight: 300;
     font-size: 0.9rem;
     color: #7f8c8d;
@@ -48,7 +48,7 @@
 }
 
 .footerNav p {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
     font-weight: 600;
     font-size: 1.1rem;
     color: #2c3e50;
@@ -58,13 +58,13 @@
 }
 
 .navLink {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-primary);
     font-weight: 400;
     font-size: 0.95rem;
     color: #34495e;
     text-decoration: none;
     margin-bottom: 0.5rem;
-    transition: color 0.3s ease;
+    transition: var(--transition-normal);
 }
 
 .navLink:hover {
@@ -97,7 +97,7 @@
 .socialIcon {
     width: 25px;
     height: 25px;
-    transition: transform 0.3s ease;
+    transition: var(--transition-normal);
 }
 
 .socialIcon:hover {
