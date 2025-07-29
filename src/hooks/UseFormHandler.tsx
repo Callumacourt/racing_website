@@ -27,8 +27,6 @@ function UseFormHandler (fieldnames: string[]) {
 
     function validateForm (requiredFields = fieldnames) {
         const errors : Record<string, string> = {};
-
-        console.log(`formfields ${requiredFields}`)
         
         for (const field of fieldnames) {
             const value = formDetails[field]?.trim();
@@ -43,7 +41,6 @@ function UseFormHandler (fieldnames: string[]) {
                         errors[field + 'Err'] = 'Please enter a valid email';
                     }
                 } else if (field.toLowerCase().includes('number')) {
-                    console.log('seeing number')
                     if (!/^\d{10,}$/.test(value.replace(/\D/g, ''))) {
                         errors[field + 'Err'] = 'Please enter a valid phone number'
                     }

@@ -1,7 +1,7 @@
 import styles from './image.module.css'
 import {motion} from 'motion/react'
 
-export function Image ({handleImageClick, id, src, alt}) {
+export function Image ({handleImageClick, id, src, alt} : {handleImageClick : (id : string) => void, id: string, src:string, alt: string}) {
     
     return (
         <>
