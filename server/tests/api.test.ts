@@ -118,8 +118,7 @@ describe('POST/api/contact', () => {
     })
 
     it('returns 400 if no data is sent', async () => {
-        const res = await request(app).post('/api/sponsor').send({});
+        const res = await request(app).post('/api/contact').send({});
         expect(res.status).toBe(400);
     });
-
 })

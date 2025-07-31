@@ -1,6 +1,6 @@
 export function validateEmail (email:string) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+    return re.test(email) && email.length <= 254;
 }
 
 export function validateMobile(mobile:string) {
@@ -15,4 +15,11 @@ export function validateRequiredFields(data: Record<string, any>, requiredFields
         }
     }
     return null;
+}
+
+export function sanitiseInput(input: string | null | undefined): string {
+    if (!input || typeof input !== 'string') {
+        return '';
+    }
+    return input.trim().replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
 }
