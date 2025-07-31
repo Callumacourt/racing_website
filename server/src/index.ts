@@ -2,6 +2,7 @@ import { configDotenv } from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import { Resend } from 'resend';
+import { validateEmail, validateRequiredFields, validateMobile } from '../utils/validators';
 
 configDotenv();
 
@@ -17,6 +18,25 @@ app.use(express.json());
 
 app.post('/api/sponsor', async (req, res) => {
   const { companyName, contactName, contactEmail, contactNumber } = req.body;
+
+  // Check all required fields entered
+  const validationError = validateRequiredFields(req.body, ['companyName', 'contactName', 'contactEmail']);
+  if (validationError) {
+    return res.status(400).json({success: false, error: `Missing required field ${validationError}`})
+  }
+
+  // Validate email
+  if (!validateEmail(contactEmail)) {
+    return res.status(400).json({success: false, error: 'Invalid email'})
+  }
+
+  // Validate mobile if provided
+  if (contactNumber) {
+    const number = contactNumber.trim();
+    if (!validateMobile(number)) {
+      return (res.status(400).json({success: false, error: 'Invalid mobile'}))
+    }
+  }
   
   try {
     const emailData = {
@@ -40,6 +60,15 @@ app.post('/api/sponsor', async (req, res) => {
 app.post('/api/contact', async (req, res) => {
     const {fullname, email, message} = req.body;
 
+    const validationError = validateRequiredFields(req.body, ['fullname', 'email', 'message']);
+    if (validationError) {
+      return res.status(400).json({success: false, error: `Missing required field ${validationError}`})
+    }
+
+      if (!validateEmail(email)) {
+      return res.status(400).json({success: false, error: 'Invalid email'})
+    }
+
     try {
         const contactData = {
             from: 'onboarding@resend.dev',
@@ -58,7 +87,4 @@ app.post('/api/contact', async (req, res) => {
     }
     )
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+export default app;
