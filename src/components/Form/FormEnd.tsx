@@ -2,21 +2,34 @@ import styles from './GeneralForm.module.css'
 
 function FormEnd ({
     hasSubmitted, 
-    isSubmitting
+    isSubmitting,
+    submitError,
     } : {
     hasSubmitted : boolean;
-    isSubmitting: boolean
+    isSubmitting: boolean;
+    submitError: boolean;
     }) 
     {
     return (
         <>
-          <button 
-                className = {styles.submitBtn}
-                aria-label="Form submit" 
-                type="submit"
-                disabled = {isSubmitting}
-              >{isSubmitting ? <div className = {styles.spinner} aria-label="Loading.."></div> : 'Submit'}</button>
-              
+         <button 
+            className = {styles.submitBtn}
+            aria-label="Form submit" 
+            type="submit"
+            disabled = {isSubmitting}
+          >
+          {isSubmitting ? <div className = {styles.spinner} aria-label="Loading.."></div> : 'Submit'}
+          </button>
+          
+          {submitError ? (
+          <>
+            <div>
+              <p>Something went wrong with your request, please try again or email us directly at</p>
+              <a href="mailto:callumacourtt@gmail.com?subject=enquiry">click here</a>
+            </div>
+          </>
+          ) : (
+          <>     
               {hasSubmitted && (
                 <div className={styles.successMessage}>
                   <svg 
@@ -38,6 +51,8 @@ function FormEnd ({
                   <span className = {styles.thankYouText}>Thank you! We'll be in touch soon.</span>
                 </div>
               )}
+            </>
+          )}
         </>
     )
 }

@@ -2,8 +2,11 @@ import FormInput from '../Form/FormInput'
 import UseFormHandler from '../../hooks/UseFormHandler'
 import FormEnd from  '../Form/FormEnd'
 import styles from './ContactForm.module.css'
+import { useState } from 'react'
 
 function ContactForm () {
+
+    const [submitError, setSubmitError] = useState(false);
 
     const {
         formDetails,
@@ -17,10 +20,12 @@ function ContactForm () {
         resetForm
     } = UseFormHandler(['fullName', 'email', 'message'])
 
-    const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
     const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        
+        if (submitError) {
+            setSubmitError(false)
+        }
 
         const honeyPot = (e.currentTarget.elements.namedItem('mobile') as HTMLInputElement | null)?.value || '';
         if (honeyPot) {
@@ -29,10 +34,34 @@ function ContactForm () {
         
         if (validateForm()) {
             setIsSubmitting(true)
-            await(wait(1000))
-            setHasSubmitted(true)
-            setIsSubmitting(false)
-        } 
+
+            try {
+                const res = await fetch('http://localhost:3000/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        fullname: formDetails.fullName,
+                        email: formDetails.email,
+                        message: formDetails.message
+                    })
+                })
+
+                if (!res.ok) {
+                    setSubmitError(true)
+                    throw new Error(`HTTP Error! status: ${res.status}`)
+                }
+                setHasSubmitted(true)
+
+            } catch(error) {
+                setSubmitError(true)
+
+            } finally {
+                setIsSubmitting(false)
+                resetForm()
+            }
+        }
     }
 
     return (
@@ -80,10 +109,11 @@ function ContactForm () {
                 required={true}
             />
 
-            <FormEnd isSubmitting = {isSubmitting} hasSubmitted = {hasSubmitted}/>
+            <FormEnd submitError = {submitError} isSubmitting = {isSubmitting} hasSubmitted = {hasSubmitted}/>
         </form>
         </>
     )
+
 }
 
 export default ContactForm;

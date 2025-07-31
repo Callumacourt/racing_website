@@ -2,9 +2,12 @@ import styles from './SponsorForm.module.css'
 import FormInput from '../Form/FormInput.js';
 import FormEnd from '../Form/FormEnd'
 import UseFormHandler from "../../hooks/UseFormHandler";
+import { useState } from 'react';
 import { FormEvent } from 'react';
 
 function SponsorForm () {
+
+  const [submitError, setSubmitError] = useState(false);
 
   const {
     formDetails,
@@ -18,13 +21,12 @@ function SponsorForm () {
       resetForm
   } = UseFormHandler(['companyName', 'contactName', 'contactEmail', 'contactNumber'])
 
-
-  /* For mocking backend email send wait time - will remove when writing backend*/
-  const wait = (ms: number) : Promise<void> => 
-    new Promise(resolve => setTimeout(resolve, ms));
-
   const handleSubmit = async(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    if (submitError) {
+      setSubmitError(false)
+    }
 
     /* Ignore bot submissions */
     const honeyPot = (e.currentTarget.elements.namedItem('companyWebsite') as HTMLInputElement)?.value;
@@ -33,17 +35,36 @@ function SponsorForm () {
     }
 
     if (validateForm(['companyName', 'contactName', 'contactEmail'])) {
-        console.log('Form submitted')
-    } else {
-      return
-    }
+        setIsSubmitting(true)
 
-    setIsSubmitting(true)
-    await(wait(1000))
-    /* Reset form details */
-    setHasSubmitted(true)
-    setIsSubmitting(false)
-    resetForm()
+      try {
+        const res = await fetch('http://localhost:3000/api/sponsor', {
+          method: 'POST',
+          headers : {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            companyName: formDetails.companyName,
+            contactName: formDetails.contactName,
+            contactEmail: formDetails.contactEmail,
+            contactNumber: formDetails.contactNumber,
+          })
+        })
+
+        if (!res.ok) {
+          setSubmitError(true)
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        setHasSubmitted(true)
+        
+      } catch (error) {
+        setSubmitError(true)
+      } finally {
+        setIsSubmitting(false)
+        resetForm()
+      }
+    }
   };
 
   return (
@@ -103,7 +124,7 @@ function SponsorForm () {
         aria-hidden = 'true'
       />
 
-      <FormEnd hasSubmitted = {hasSubmitted} isSubmitting = {isSubmitting}/>
+      <FormEnd submitError = {submitError} hasSubmitted = {hasSubmitted} isSubmitting = {isSubmitting}/>
     </form>
   );
 }

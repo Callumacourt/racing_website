@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "dotenv": "^17.2.1",
     "masonry-css": "^0.0.6",
     "motion": "^12.23.9",
     "prop-types": "^15.8.1",

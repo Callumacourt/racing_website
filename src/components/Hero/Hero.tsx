@@ -6,7 +6,7 @@ import controlImg from  '../../assets/images/diagrams/controlImg.jpg'
 import businessImg from '../../assets/images/diagrams/businessImg2.jpg'
 
 function Hero () {
-    return (
+        return (
         <>
             <main className={styles.imgContainer}>
                 <img 
