@@ -4,6 +4,7 @@ import TeamLogo from '../../assets/images/logos/logo_glow.png'
 import MobileHeader from './MobileHeader';
 import InstaLogo from '../../assets/images/icons/instagram.svg'
 import LinkedinLogo from '../../assets/images/icons/linkedin.svg'
+import { Link } from 'react-router-dom';
 
 function Header () {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -26,11 +27,11 @@ function Header () {
             <nav className={styles.nav}>
                 <img className = {styles.teamLogo} src={TeamLogo} alt="Cardiff University Team Logo" />
                 <div className={styles.links}>
-                    <p>Home</p>
-                    <p>Team History</p>
-                    <p>Gallery</p>
-                    <p>Sponsorship</p>
-                    <p>Contact</p>
+                    <Link to='/'><p>Home</p></Link>
+                    <Link to= '/teamhistory'><p>Team History</p></Link>
+                    <Link to= '/gallery'><p>Gallery</p></Link>
+                    <Link to='/sponsorship'><p>Sponsorship</p></Link>
+                    <Link to='/contact'><p>Contact</p></Link>
                 </div>
                 <div className={styles.logos}>
                     <a href="https://www.instagram.com/cardiff_autonomous_racing/" target="_blank" rel="noopener noreferrer">

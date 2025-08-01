@@ -1,6 +1,7 @@
 import carImg from '../../assets/images/team/general/carimg.jpg'
 import styles from './Hero.module.css'
 import perceptionImg from '../../assets/images/diagrams/perceptionImg2.jpg'
+import logisticsImg from '../../assets/images/diagrams/logisticsImg.jpg'
 import pathImg from '../../assets/images/diagrams/pathPlanning.jpg'
 import controlImg from  '../../assets/images/diagrams/controlImg.jpg'
 import businessImg from '../../assets/images/diagrams/businessImg2.jpg'
@@ -31,6 +32,7 @@ function Hero () {
                 <h2 className = {styles.qAndA}>What roles are available?</h2>
                 <h2>Engineering Roles</h2>
                 
+                <div className={styles.rolesWrapper}>
                 <section className={styles.perceptionSection}>
                     <h3>Perception</h3>
                     <div className={styles.roleImgContainer}>
@@ -60,14 +62,16 @@ function Hero () {
                     </div>
                     <p>Implement control systems that translate path planning decisions into actual vehicle movements, managing steering, acceleration, and braking.</p>
                 </section>
-                
+                </div>
+
                 <h2>Non Engineering Roles</h2>
+                <div className = {styles.rolesWrapper}>
                 <section className={styles.businessSection}>
                     <h3>Business</h3>
                     <div className={styles.roleImgContainer}>
-                    <img 
-                        src={businessImg} 
-                        alt="Bicycle model visualisation" />
+                        <img 
+                            src={businessImg} 
+                            alt="Bicycle model visualisation" />
                     </div>
                     <p>Handle sponsorship acquisition, and financial management as well as
                         helping prepare us for our business presentation at Formula Student.</p>
@@ -75,9 +79,15 @@ function Hero () {
                 
                 <section className={styles.logisticsSection}>
                     <h3>Logistics</h3>
+                    <div className={styles.roleImgContainer}>
+                        <img 
+                            src={logisticsImg} 
+                            alt="An image of people planning out tasks in a notepad" />
+                    </div>
                     <p>Coordinate team activities, manage equipment, organise travel to competitions, and ensure smooth day to day operations.</p>
                 </section>
-
+                </div>
+                <div className = {styles.heroEnd}>
                 <section>
                     <h2>What experience do I need?</h2>
                     <p>You don't need any previous experience in order to join the team,
@@ -95,6 +105,7 @@ function Hero () {
                     </p>
                     <button>Apply</button>
                 </section>
+                </div>
             </section>
         </>
     )
