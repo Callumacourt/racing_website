@@ -1,8 +1,9 @@
 import { configDotenv } from 'dotenv';
 import express from 'express';
 import cors from 'cors';
-import { Resend } from 'resend';
-import { validateEmail, validateRequiredFields, validateMobile, sanitiseInput } from '../utils/validators';
+import { sanitiseContactData, validateContactData, sanitiseSponsorData, validateSponsorData, validateInputTypes } from '../utils/validation';
+import { sendContactEmail, sendSponsorEmail } from '../services/emailService';
+import helmet from 'helmet';
 
 configDotenv();
 
@@ -11,100 +12,62 @@ console.log('Resend Key:', process.env.resendKey ? 'Loaded' : 'Missing');
 console.log('Email To:', process.env.email_to);
 
 const app = express();
-const resend = new Resend(process.env.resendKey);
+app.use(helmet());
 
 app.use(cors());
-app.use(express.json());
-
-app.post('/api/sponsor', async (req, res) => {
-  const { companyName, contactName, contactEmail, contactNumber } = req.body;
-
-  // Sanitise all inputs
-  const sanitisedCompanyName = sanitiseInput(companyName);
-  const sanitisedContactName = sanitiseInput(contactName);
-  const sanitisedContactEmail = sanitiseInput(contactEmail);
-  const sanitisedContactNumber = sanitiseInput(contactNumber)
-
-  // Check all required fields entered - use sanitised inputs
-  const sanitisedData = {
-    companyName: sanitisedCompanyName,
-    contactName: sanitisedContactName,
-    contactEmail: sanitisedContactEmail
-  };
-  const validationError = validateRequiredFields(sanitisedData, ['companyName', 'contactName', 'contactEmail']);
-  if (validationError) {
-    return res.status(400).json({success: false, error: `Missing required field ${validationError}`})
-  }
-
-  // Validate email
-  if (!validateEmail(sanitisedContactEmail)) {
-    return res.status(400).json({success: false, error: 'Invalid email'})
-  }
-
-  // Validate mobile if provided
-  if (sanitisedContactNumber) {
-    const number = sanitisedContactNumber.trim();
-    if (!validateMobile(number)) {
-      return res.status(400).json({success: false, error: 'Invalid mobile'})
-    }
-  }
-  
-  try {
-    const emailData = {
-      from: 'onboarding@resend.dev', 
-      to: process.env.email_to ?? '',
-      subject: `Sponsorship enquiry from ${sanitisedCompanyName}`,
-      html: `<p><strong>Company:</strong> ${sanitisedCompanyName}<br>
-             <strong>Contact Name:</strong> ${sanitisedContactName}<br>
-             <strong>Email:</strong> ${sanitisedContactEmail}<br>
-             <strong>Phone:</strong> ${sanitisedContactNumber || 'Not provided'}</p>`
-    };
-    
-    const result = await resend.emails.send(emailData);
-
-    res.status(200).json({ success: true, emailId: result.data?.id });
-  } catch (err) {
-    res.status(500).json({ success: false, error: 'Email failed to send' });
-  }
-});
+app.use(express.json({limit: '15kb'}));
 
 app.post('/api/contact', async (req, res) => {
-    const {fullname, email, message} = req.body;
-
-    // Sanitise all inputs
-    const sanitisedFullname = sanitiseInput(fullname);
-    const sanitisedEmail = sanitiseInput(email);
-    const sanitisedMessage = sanitiseInput(message);
-
-    // Use sanitised inputs for validation
-    const sanitisedData = {
-      fullname: sanitisedFullname,
-      email: sanitisedEmail,
-      message: sanitisedMessage
-    };
-    const validationError = validateRequiredFields(sanitisedData, ['fullname', 'email', 'message']);
-    if (validationError) {
-      return res.status(400).json({success: false, error: `Missing required field ${validationError}`})
-    }
-
-    if (!validateEmail(sanitisedEmail)) {
-      return res.status(400).json({success: false, error: 'Invalid email'})
-    }
-
     try {
-        const contactData = {
-            from: 'onboarding@resend.dev',
-            to: process.env.email_to ?? '',
-            subject: `Contact enquiry from ${sanitisedFullname}`,
-            html: `<p><strong>Name:</strong> ${sanitisedFullname}</p>
-                   <p><strong>Email:</strong> ${sanitisedEmail}</p>
-                   <p><strong>Message:</strong> ${sanitisedMessage}</p>`
-        };
-        
-        const result = await resend.emails.send(contactData);
+        // Validate input types
+        const typeValidation = validateInputTypes(req.body);
+        if (!typeValidation.isValid) {
+            return res.status(400).json({ success: false, error: typeValidation.error });
+        }
+
+        // Sanitise input
+        const sanitiseddData = sanitiseContactData(req.body);
+
+        // Validate sanitised data
+        const validation = validateContactData(sanitiseddData);
+        if (!validation.isValid) {
+            return res.status(400).json({ success: false, error: validation.error });
+        }
+
+        // Process valid, clean data
+        const result = await sendContactEmail(sanitiseddData);
         res.status(200).json({ success: true, emailId: result.data?.id });
-    } catch (err) {
-        res.status(500).json({ success: false, error: 'Email failed to send' });
+        
+    } catch (error) {
+        console.error('Contact endpoint error:', error);
+        res.status(500).json({ success: false, error: 'Internal server error' });
+    }
+});
+
+app.post('/api/sponsor', async (req, res) => {
+    try {
+        // Validate input types
+        const typeValidation = validateInputTypes(req.body);
+        if (!typeValidation.isValid) {
+            return res.status(400).json({ success: false, error: typeValidation.error });
+        }
+
+        // sanitised input
+        const sanitiseddData = sanitiseSponsorData(req.body);
+
+        // Validate sanitised data
+        const validation = validateSponsorData(sanitiseddData);
+        if (!validation.isValid) {
+            return res.status(400).json({ success: false, error: validation.error });
+        }
+
+        // Process valid and cleaned data
+        const result = await sendSponsorEmail(sanitiseddData);
+        res.status(200).json({ success: true, emailId: result.data?.id });
+        
+    } catch (error) {
+        console.error('Sponsor endpoint error:', error);
+        res.status(500).json({ success: false, error: 'Internal server error' });
     }
 });
 
