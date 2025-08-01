@@ -1,4 +1,4 @@
-import { validateEmail, validateRequiredFields, validateMobile, validateStringLength, validateName, sanitiseInput } from './validators';
+import { validateEmail, validateRequiredFields, validateMobile, validateStringLength, validateName, sanitiseInput, validateInputTypes } from './validators';
 interface ValidationResult {
   isValid: boolean;
   error?: string;
@@ -69,6 +69,7 @@ export function validateContactData(data: SanitisedContactData): ValidationResul
 }
 
 export function validateSponsorData(data: SanitisedSponsorData): ValidationResult {
+  console.log(data)
   // Required fields
   const validationError = validateRequiredFields(data, ['companyName', 'contactName', 'contactEmail']);
   if (validationError) {
@@ -77,15 +78,18 @@ export function validateSponsorData(data: SanitisedSponsorData): ValidationResul
 
   // Length validation
   if (!validateStringLength(data.companyName, 100)) {
+    console.log('string too long')
     return { isValid: false, error: 'Company name too long' };
   }
 
   // Format validation
   if (!validateName(data.contactName)) {
+    console.log('name invalid')
     return { isValid: false, error: 'Invalid contact name' };
   }
 
   if (!validateEmail(data.contactEmail)) {
+    console.log('email invalid')
     return { isValid: false, error: 'Invalid email format' };
   }
 
@@ -98,9 +102,14 @@ export function validateSponsorData(data: SanitisedSponsorData): ValidationResul
 }
 
 // INPUT TYPE VALIDATION 
-export function validateInputTypes(body: any): ValidationResult {
+export function validateInput(body: any): ValidationResult {
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return { isValid: false, error: 'Invalid input format' };
+  }
+
   if (!validateInputTypes(body)) {
     return { isValid: false, error: 'Invalid input format' };
   }
+  
   return { isValid: true };
 }

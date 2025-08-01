@@ -4,7 +4,7 @@ export function validateEmail (email:string) {
 }
 
 export function validateMobile(mobile:string) {
-    const re = /^\+?[1-9]\d{1,3}[ -]?\d{4,14}(?:[ -]?\d{2,4})?$/;
+    const re = /^(?:\+44|0)7\d{3}[ -]?\d{3}[ -]?\d{3}$/;
     return re.test(mobile);
 }
 

@@ -1,11 +1,11 @@
 import { configDotenv } from 'dotenv';
+configDotenv();
 import express from 'express';
 import cors from 'cors';
-import { sanitiseContactData, validateContactData, sanitiseSponsorData, validateSponsorData, validateInputTypes } from '../utils/validation';
+import { sanitiseContactData, validateContactData, sanitiseSponsorData, validateSponsorData, validateInput } from '../utils/validation';
 import { sendContactEmail, sendSponsorEmail } from '../services/emailService';
 import helmet from 'helmet';
 
-configDotenv();
 
 console.log('Environment check:');
 console.log('Resend Key:', process.env.resendKey ? 'Loaded' : 'Missing');
@@ -20,7 +20,7 @@ app.use(express.json({limit: '15kb'}));
 app.post('/api/contact', async (req, res) => {
     try {
         // Validate input types
-        const typeValidation = validateInputTypes(req.body);
+        const typeValidation = validateInput(req.body);
         if (!typeValidation.isValid) {
             return res.status(400).json({ success: false, error: typeValidation.error });
         }
@@ -47,8 +47,9 @@ app.post('/api/contact', async (req, res) => {
 app.post('/api/sponsor', async (req, res) => {
     try {
         // Validate input types
-        const typeValidation = validateInputTypes(req.body);
+        const typeValidation = validateInput(req.body);
         if (!typeValidation.isValid) {
+            console.log('Invalid types')
             return res.status(400).json({ success: false, error: typeValidation.error });
         }
 
@@ -58,6 +59,7 @@ app.post('/api/sponsor', async (req, res) => {
         // Validate sanitised data
         const validation = validateSponsorData(sanitiseddData);
         if (!validation.isValid) {
+            console.log('invalid input')
             return res.status(400).json({ success: false, error: validation.error });
         }
 
