@@ -3,99 +3,164 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap');
 
 .teamHistoryWrapper {
-    text-align: left;
-    color: white;
+    padding: 5vh 10vw;
     background-color: #1a1a2e;
-    padding-inline: 4vw;
-    font-family: 'Inter', sans-serif;
-    padding-bottom: 4vh;
-}
-
-.teamHistoryWrapper h1 {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 3rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 2vh;
-}
-
-.teamHistoryWrapper h2 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
     color: white;
-    margin-bottom: 2vh;
-    margin-top: 2vh;
 }
 
-.teamHistoryWrapper h3 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 1.5rem;
-    color: lightblue;
-    margin-top: 0;
-    letter-spacing: -0.01em;
-}
-
-.teamHistoryWrapper p {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #e8e8e8;
-}
-
-.timeline {
-  position: relative;
-  padding-left: 30px;
-  margin: 0;
-  border-left: 2px dotted #ccc;
-}
-
-.timelineItem {
-  position: relative;
-  margin-bottom: 40px;
-}
-
-.timelineMarker {
-  position: absolute;
-  left: -10px;
-  top: 0;
-  width: 16px;
-  height: 16px;
-  background-color: white;
-  border: 3px solid #007bff;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.timelineContent {
-  margin-left: 20px;
-}
-
-.timelineContent span {
-  display: flex;
-  gap: 2vw;
-  align-items: center;
-  margin-bottom: 1rem;
+h1 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'Roboto';
 }
 
 .yearHeader {
-  display: flex;
-  gap: 5px;
-  margin-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
+.timeline {
+    position: relative;
+    margin: 0 auto;
+    padding: 2rem 0;
+    max-width: 800px;
+}
 
-@media (max-width: 768px) {
-  .timelineItem {
+.timelineItem {
+    display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    margin-bottom: 5rem;
+    position: relative;
+}
 
-  .timelineContentLeft,
-  .timelineContentRight {
-    display: block !important;
-    text-align: left;
+.timelineMarker {
+    width: 20px;
+    height: 20px;
+    background-color: #00bfa6;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2; 
+    margin-bottom: 1rem;
+}
+
+.timelineContent {
+    background-color: #2a2a4a;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     width: 100%;
-  }
+    text-align: left;
+    margin-bottom: 1rem;
+    z-index: 1; 
+}
+
+.timelineContent h3 {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+    color: #00bfa6;
+    font-family: 'Inter', 'sans-serif';
+}
+
+.timelineContent img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+}
+
+.timelineContent p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e8e8e8;
+    font-family: 'Inter';
+}
+
+.imgContainer {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 1rem;
+    z-index: 1; 
+}
+
+.imgContainer img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh; /* Add this line */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background-color: #00bfa6;
+    transform: translateX(-50%);
+    z-index: 0; 
+    display: none; 
+}
+
+.timelineMarker {
+  display: none;
+}
+
+@media (min-width: 769px) {
+    .teamHistoryWrapper {
+        padding: 10vh 2vw;
+    }
+
+    .timeline {
+        max-width: 90%;
+    }
+
+    .timelineItem {
+        flex-direction: row;
+        width: 100%;
+        align-items: flex-start;
+        margin-bottom: 6rem;
+        justify-content: space-between;
+        gap: 10vw; 
+    }
+
+    .timelineItem.left {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+
+    .timelineItem.right {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .timelineMarker {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 0;
+    }
+
+    .timelineContent {
+        width: 48%; 
+        margin: 0;
+    }
+
+    .imgContainer {
+        width: 48%;
+        margin: 0;
+        max-height: 20vh;
+        max-width: none;
+    }
+
+    .timeline::before {
+        display: block; 
+    }
 }

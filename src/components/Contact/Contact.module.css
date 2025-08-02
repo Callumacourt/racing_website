@@ -60,3 +60,18 @@
     color: white;
     border: 1px solid white;
 }
+
+@media (min-width: 769px) {
+    .contactWrapper {
+        padding: 10vh 10vw;
+    }
+
+    .contactWrapper textarea {
+        height: 30vh;
+        width: 50%;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+}

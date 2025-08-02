@@ -146,3 +146,21 @@
 .formSection {
     padding: 2vh 4vw;
 }
+
+
+@media (min-width: 769px) {
+  .imgContainer img {
+    object-fit: cover;
+    object-position: center -300px;
+  }
+
+  .pitchSection {
+    padding-top: 10vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .formSection {
+    padding: 2vh 8vw;
+  }
+}

@@ -184,3 +184,9 @@ small {
     from { background-size: 0% 1px; }
     to { background-size: 100% 1px; }
 }
+
+@media (min-width: 769px) {
+    input {
+        width: 50%;
+    }
+}

@@ -5,6 +5,7 @@ import logisticsImg from '../../assets/images/diagrams/logisticsImg.jpg'
 import pathImg from '../../assets/images/diagrams/pathPlanning.jpg'
 import controlImg from  '../../assets/images/diagrams/controlImg.jpg'
 import businessImg from '../../assets/images/diagrams/businessImg2.jpg'
+import teamPhoto from '../../assets/images/team/gallery/bigTeam.jpg';
 
 function Hero () {
         return (
@@ -88,7 +89,7 @@ function Hero () {
                 </section>
                 </div>
                 <div className = {styles.heroEnd}>
-                <section>
+                <section className = {styles.experience}>
                     <h2>What experience do I need?</h2>
                     <p>You don't need any previous experience in order to join the team,
                         we are happy to teach you anything you need to know and application

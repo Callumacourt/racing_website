@@ -135,20 +135,24 @@
         padding: 1vh 0 2vh;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         justify-content: space-evenly;
-        column-gap: 100px;
+        column-gap: 70px;
         row-gap: 20px;
     }
 
+    .rolesWrapper section {
+        padding: 1vh 2vw;
+    }
+
+    .roleImgContainer {
+        max-width: 450px;
+    }
+
     .infoSection {
-        padding: 10vh 3vw 5vh 3vw;
+        padding: 10vh 3vw 12.5vh 3vw;
     }
 
     .qAndA {
         padding-top: 5vh;
-    }
-
-    .roleImgContainer {
-        width: 100%;
     }
 
     .roleImgContainer img {
@@ -191,4 +195,7 @@
         width: 75%;
     }
     
+    .experience {
+        padding-left: 1vw;
+    }
 }

@@ -25,6 +25,7 @@ function Sponsorship () {
             <div className={styles.teamPhotoContainer}>
                 <img src={teamPhoto} alt="" />
             </div>
+        <span>
         <h4>Where your support goes</h4>
         <p>
             Your support directly enables us to design, test, and deploy our autonomous system.
@@ -57,6 +58,7 @@ function Sponsorship () {
                     complex conditions.</p>
             </li>
         </ul>
+        </span>
     </section>
     <section className={styles.tierSection}>
     <h4>Sponsorship Tiers</h4>
