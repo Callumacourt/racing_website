@@ -2,5 +2,55 @@
     display: flex;
     flex-direction: column;
     margin-top: 3vh;
-    position: relative; 
+    position: relative;
+    align-items: center;
+}
+
+.sponsorForm button {
+    grid-row: 3;
+    margin-top: 1.618rem;
+    width: 90%;
+    margin-bottom: 1.618rem;
+    justify-self: center;
+}
+
+.sponsorForm .activeSubmitErr, 
+.sponsorForm .hiddenSubmitErr {
+    justify-self: center;
+    text-align: center;
+    grid-column: 1/3;
+    width: 80%;
+    margin-top: 1.618rem;
+}
+
+.inputWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.618rem;
+    width: 90%;
+}
+
+.inputWrapper input {
+    justify-self: center;
+}
+
+.inputWrapper label {
+    align-self: flex-start;
+}
+
+
+@media (min-width: 769px) {
+    
+    .inputWrapper {
+        margin: 0 auto;
+    }
+
+    .sponsorForm {
+        align-items: center;
+        margin: auto;
+    }
+
+    .sponsorForm button {
+        width: 75%;
+    }
 }

@@ -48,13 +48,16 @@ function FormInput ({
 
     return (
         <>
-        <label htmlFor={name}>{label}</label>
-        {renderInput()}
-        <small className={error ? styles.activeErr : styles.hiddenErr}>
-            <i>{error}</i>
-        </small>
+            <div className={styles.labelWrapper}>
+                <label htmlFor={name}>{label}</label>
+                {!required && <small className={styles.optionalText}>(Optional)</small>}
+            </div>
+            {renderInput()}
+            <small className={error ? styles.activeErr : styles.hiddenErr}>
+                <i>{error}</i>
+            </small>
         </>
     )
 }
 
-export default FormInput
+export default FormInput;

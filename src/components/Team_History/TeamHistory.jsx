@@ -7,7 +7,8 @@ import flag from '../../assets/images/icons/flag.svg';
 import working from '../../assets/images/team/gallery/working.jpg'
 import working2 from '../../assets/images/team/gallery/working2.jpg';
 import recruitment from '../../assets/images/team/gallery/recruitment.jpg'
-import teamphoto from '../../assets/images/team/gallery/teamPhoto.jpg'
+import teamphoto from '../../assets/images/team/gallery/bigTeam.jpg';
+
 
 function TeamHistory() {
     return (

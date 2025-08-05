@@ -67,27 +67,31 @@ function ContactForm () {
     return (
         <>
         <form className = {styles.contactForm} onSubmit={handleSubmit} noValidate>
+            <div className={styles.inputWrapper}>
             <FormInput
-                name={'fullName'}
-                label={'Full Name'}
-                kind={'input'}
-                type={'text'}
-                value={formDetails.fullName}
-                error = {formErrors.fullNameErr}
-                onChange={handleFormChange}
-                required={true}
-            />
-
-            <FormInput
-                name={'email'}
-                label={'Email'}
-                kind={'input'}
-                type={'email'}
-                value={formDetails.email}
-                error = {formErrors.emailErr}
-                onChange={handleFormChange}
-                required={true}
-            />
+                    name={'fullName'}
+                    label={'Full Name'}
+                    kind={'input'}
+                    type={'text'}
+                    value={formDetails.fullName}
+                    error = {formErrors.fullNameErr}
+                    onChange={handleFormChange}
+                    required={true}
+                />
+            </div>
+            
+            <div className = {styles.inputWrapper}>
+                <FormInput
+                    name={'email'}
+                    label={'Email'}
+                    kind={'input'}
+                    type={'email'}
+                    value={formDetails.email}
+                    error = {formErrors.emailErr}
+                    onChange={handleFormChange}
+                    required={true}
+                />
+            </div>
 
             <input 
             type="text" 
@@ -98,6 +102,7 @@ function ContactForm () {
             aria-hidden = 'true'
             />
 
+            <div className = {styles.textAreaWrapper}>
             <FormInput
                 name={'message'}
                 label={'Enquiry'}
@@ -108,6 +113,7 @@ function ContactForm () {
                 onChange={handleFormChange}
                 required={true}
             />
+            </div>
 
             <FormEnd submitError = {submitError} isSubmitting = {isSubmitting} hasSubmitted = {hasSubmitted}/>
         </form>

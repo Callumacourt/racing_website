@@ -30,7 +30,7 @@ input:-webkit-autofill:active {
 /* Focus styles */
 input:focus {
     outline: none;
-    border-bottom: 2px solid var(--color-accent);
+    border-bottom: 1px solid var(--color-accent);
     box-shadow: var(--shadow-sm);
     transform: scale(1.02);
     transition: var(--transition-normal);
@@ -56,29 +56,43 @@ textarea:focus {
 }
 
 /* Label styles */
+.labelWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; 
+}
+
 label {
-    padding-bottom: 1vh;
     color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.optionalText {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #ccc; 
+    margin: 0 !important;
 }
 
 /* Error states */
 .hiddenErr {
     height: 1rem;
     opacity: 0;
-    margin-bottom: 2vh;
+    margin-bottom: 1.618rem; /* Golden ratio spacing for error messages */
     transition: opacity 0.3s ease-in-out;
 }
 
 .activeErr {
     height: 1rem;
     opacity: 1;
-    margin-bottom: 2vh;
+    margin-bottom: 1.618rem; /* Golden ratio spacing for error messages */
     color: red;
     transition: opacity 0.3s ease-in-out;
 }
 
 .inputError {
-    border-bottom: 2px solid transparent;
+    border-bottom: 1px solid transparent;
     background: linear-gradient(to right, var(--color-error) 0%, var(--color-error) 100%) left bottom/0% 2px no-repeat;
     animation: errorShake 0.6s ease-in-out, borderSpread 0.8s ease-out 0.2s forwards;
     transition: none;
@@ -105,17 +119,16 @@ label {
 .submitBtn {
     border-radius: 20px;
     padding: 1vh 2vw;
-    margin-top: 1vh;
-    margin-bottom: 0; 
     font-size: 1.1rem;
-    height: 48px; 
+    height: 48px;
     font-family: 'Source Sans Pro';
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 100px; 
-    box-sizing: border-box; 
-    border: none; 
+    min-width: 100px;
+    box-sizing: border-box;
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .spinner {
@@ -153,6 +166,35 @@ small {
     font-family: var(--font-mono);
 }
 
+.submitBtn {
+    grid-row: 3;
+}
+
+.submitBtn:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+}
+
+.submitBtn:active {
+    transform: translateY(0); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.hiddenSubmitErr {
+    visibility: hidden;
+    opacity: 0;
+    height: max-content;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.activeSubmitErr {
+    visibility: visible;
+    opacity: 1;
+    height: max-content;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    margin-top: 1.618rem; 
+}
+
 
 @keyframes fadeSlideIn {
     to {
@@ -186,7 +228,16 @@ small {
 }
 
 @media (min-width: 769px) {
-    input {
-        width: 50%;
+    .submitBtn {
+        grid-column: 1/3;
+        width: 100%;
+        justify-self: center;
+    }
+
+    .activeSubmitErr, .hiddenSubmitErr {
+        justify-self: center;
+        text-align: center;
+        grid-column: 1/3;
+        width: 80%;
     }
 }

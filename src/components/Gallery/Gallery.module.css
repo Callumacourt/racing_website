@@ -1,9 +1,20 @@
 .galleryWrapper {
-    background-color: white;
+    background-color: #1a1a2e;
     padding: 1vh 1vw
 }
 
 .bentoGrid {
     column-count: 2;
     column-gap: 1rem;
+}
+
+@media (min-width: 769px) {
+    .bentoGrid {
+        column-count: 3;
+        padding: 7vh 1vw 5vh 1vw;
+    }
+
+    .bentoGrid img:hover{
+        cursor: pointer;
+    }
 }

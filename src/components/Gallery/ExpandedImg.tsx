@@ -3,7 +3,7 @@ import closeIcn from '../../assets/images/icons/whiteX.svg'
 import { motion } from 'motion/react'
 import { useEffect } from 'react'
 
-function ExpandedImg ({src, alt, id, onClose}) {
+function ExpandedImg ({src, alt, id, onClose} : {src: string, alt: string, id: string, onClose: () => void}) {
 
     useEffect(() => {
         if (src) {
@@ -24,7 +24,7 @@ function ExpandedImg ({src, alt, id, onClose}) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.2, exit: { duration: 0.15 } }}
+                transition={{ duration: 0.2 }}
             >
                 <button 
                     onClick={onClose} 

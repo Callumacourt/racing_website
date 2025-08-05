@@ -12,6 +12,12 @@ function FormEnd ({
     {
     return (
         <>
+          <>
+            <div className = {submitError ? styles.activeSubmitErr : styles.hiddenSubmitErr}>
+              <p>Something went wrong with your request, please try again or email us directly at</p>
+              <a href="mailto:callumacourtt@gmail.com?subject=enquiry">click here</a>
+            </div>
+          </>
          <button 
             className = {styles.submitBtn}
             aria-label="Form submit" 
@@ -20,15 +26,7 @@ function FormEnd ({
           >
           {isSubmitting ? <div className = {styles.spinner} aria-label="Loading.."></div> : 'Submit'}
           </button>
-          
-          {submitError ? (
-          <>
-            <div>
-              <p>Something went wrong with your request, please try again or email us directly at</p>
-              <a href="mailto:callumacourtt@gmail.com?subject=enquiry">click here</a>
-            </div>
-          </>
-          ) : (
+    
           <>     
               {hasSubmitted && (
                 <div className={styles.successMessage}>
@@ -52,7 +50,6 @@ function FormEnd ({
                 </div>
               )}
             </>
-          )}
         </>
     )
 }

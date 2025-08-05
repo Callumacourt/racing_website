@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import styles from './Header.module.css'
 import TeamLogo from '../../assets/images/logos/logo_glow.png'
 import MobileHeader from './MobileHeader';
-import InstaLogo from '../../assets/images/icons/instagram.svg'
-import LinkedinLogo from '../../assets/images/icons/linkedin.svg'
+import InstaLogo from '../../assets/images/icons/instagramWhite.svg'
+import LinkedinLogo from '../../assets/images/icons/linkedinWhite.svg'
 import { Link } from 'react-router-dom';
 
 function Header () {

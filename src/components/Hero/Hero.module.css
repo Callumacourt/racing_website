@@ -14,6 +14,14 @@
     margin-top: 0;
 }
 
+  .imgContainer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
 .infoSection {
     padding-inline: 5vw;
     background-color: #1a1a2e;
@@ -197,5 +205,12 @@
     
     .experience {
         padding-left: 1vw;
+    }
+    
+    .heroEnd {
+        width: 100%;
+    }
+    .endImgWrapper {
+        padding: 0 !important;
     }
 }

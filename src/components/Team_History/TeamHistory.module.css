@@ -91,6 +91,7 @@ h1 {
     width: 100%;
     height: auto;
     max-height: 80vh; /* Add this line */
+    min-height: 70vh;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -126,7 +127,7 @@ h1 {
         flex-direction: row;
         width: 100%;
         align-items: flex-start;
-        margin-bottom: 6rem;
+        margin-bottom: 10rem;
         justify-content: space-between;
         gap: 10vw; 
     }

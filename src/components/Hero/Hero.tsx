@@ -5,7 +5,7 @@ import logisticsImg from '../../assets/images/diagrams/logisticsImg.jpg'
 import pathImg from '../../assets/images/diagrams/pathPlanning.jpg'
 import controlImg from  '../../assets/images/diagrams/controlImg.jpg'
 import businessImg from '../../assets/images/diagrams/businessImg2.jpg'
-import teamPhoto from '../../assets/images/team/gallery/bigTeam.jpg';
+import working from '../../assets/images/team/gallery/working.jpg'
 
 function Hero () {
         return (
@@ -88,26 +88,29 @@ function Hero () {
                     <p>Coordinate team activities, manage equipment, organise travel to competitions, and ensure smooth day to day operations.</p>
                 </section>
                 </div>
-                <div className = {styles.heroEnd}>
-                <section className = {styles.experience}>
-                    <h2>What experience do I need?</h2>
-                    <p>You don't need any previous experience in order to join the team,
-                        we are happy to teach you anything you need to know and application
-                        is open to all Cardiff University students. We just ask
-                        that you remain engaged in our work and can regularly commit time
-                        to the team.
-                    </p>
-                </section>
+                <div>
+                    <section className = {styles.experience}>
+                        <h2>What experience do I need?</h2>
+                        <p>You don't need any previous experience in order to join the team,
+                            we are happy to teach you anything you need to know and application
+                            is open to all Cardiff University students. We just ask
+                            that you remain engaged in our work and can regularly commit time
+                            to the team.
+                        </p>
+                    </section>
 
-                <section className = {styles.applySection}>
-                    <h2>How do I get involved?</h2>
-                    <p>Click the button below to fill out the response and we'll consider
-                        your application when our recruitment season opens
-                    </p>
-                    <button>Apply</button>
-                </section>
+                    <section className = {styles.applySection}>
+                        <h2>How do I get involved?</h2>
+                        <p>Click the button below to fill out the response and we'll consider
+                            your application when our recruitment season opens
+                        </p>
+                        <button>Apply</button>
+                    </section>
                 </div>
             </section>
+                                <div className={styles.endImgWrapper}>
+                    <img src={working} alt="" />
+                    </div>
         </>
     )
 }

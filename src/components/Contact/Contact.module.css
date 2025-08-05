@@ -51,16 +51,6 @@
     letter-spacing: -0.02em;
 }
 
-.contactWrapper textarea {
-    border-radius: 5px;
-    height: 10vh;
-    padding: 1vh 2vw;
-    font-family: 'Inter', sans-serif;
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-}
-
 @media (min-width: 769px) {
     .contactWrapper {
         padding: 10vh 10vw;
@@ -68,7 +58,6 @@
 
     .contactWrapper textarea {
         height: 30vh;
-        width: 50%;
     }
 
     h3 {
