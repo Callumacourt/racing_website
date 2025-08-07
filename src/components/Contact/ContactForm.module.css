@@ -12,19 +12,25 @@
     align-items: center;
 }
 
+
 .inputWrapper label {
     align-self: flex-start;
 }
 
 .contactForm textarea {
     border-radius: 5px;
-    height: 10vh;
+    height: 15vh;
+    width: 90%;
     padding: 1vh 2vw;
     margin-top: 1.618rem;
     font-family: 'Inter', sans-serif;
     background-color: transparent;
     color: white;
     border: 1px solid white;
+}
+
+.textAreaWrapper {
+    margin-bottom: 0px;
 }
 
 @media (min-width: 769px) {

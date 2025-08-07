@@ -8,10 +8,12 @@
 
 .sponsorForm button {
     grid-row: 3;
-    margin-top: 1.618rem;
     width: 90%;
-    margin-bottom: 1.618rem;
     justify-self: center;
+}
+
+.inputWrapper:nth-child(4) {
+    margin-bottom: 0px !important;
 }
 
 .sponsorForm .activeSubmitErr, 
