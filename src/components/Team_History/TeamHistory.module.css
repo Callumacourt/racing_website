@@ -35,18 +35,8 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
     position: relative;
-}
-
-.timelineMarker {
-    width: 20px;
-    height: 20px;
-    background-color: #00bfa6;
-    border-radius: 50%;
-    position: relative;
-    z-index: 2; 
-    margin-bottom: 1rem;
 }
 
 .timelineContent {
@@ -80,23 +70,6 @@ h1 {
     font-family: 'Inter';
 }
 
-.imgContainer {
-    width: 100%;
-    max-width: 500px;
-    margin-top: 1rem;
-    z-index: 1; 
-}
-
-.imgContainer img {
-    width: 100%;
-    height: auto;
-    max-height: 80vh; /* Add this line */
-    min-height: 70vh;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
 .timeline::before {
     content: '';
     position: absolute;
@@ -114,6 +87,10 @@ h1 {
   display: none;
 }
 
+.imgContainer {
+    display: none;
+}
+
 @media (min-width: 769px) {
     .teamHistoryWrapper {
         padding: 10vh 2vw;
@@ -121,6 +98,10 @@ h1 {
 
     .timeline {
         max-width: 90%;
+    }
+
+    .timeline::before {
+        border: 1px solid white;
     }
 
     .timelineItem {
@@ -159,6 +140,18 @@ h1 {
         margin: 0;
         max-height: 20vh;
         max-width: none;
+        display: block;
+    }
+
+
+    .imgContainer img {
+        width: 100%;
+        height: auto;
+        max-height: 80vh; 
+        min-height: 70vh;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .timeline::before {

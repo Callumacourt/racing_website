@@ -66,7 +66,7 @@ function Hero () {
                 </div>
 
                 <h2>Non Engineering Roles</h2>
-                <div className = {styles.rolesWrapper}>
+                <div className = {styles.nonEngRolesWrapper}>
                 <section className={styles.businessSection}>
                     <h3>Business</h3>
                     <div className={styles.roleImgContainer}>
@@ -98,7 +98,6 @@ function Hero () {
                             to the team.
                         </p>
                     </section>
-
                     <section className = {styles.applySection}>
                         <h2>How do I get involved?</h2>
                         <p>Click the button below to fill out the response and we'll consider
@@ -108,9 +107,15 @@ function Hero () {
                     </section>
                 </div>
             </section>
-                                <div className={styles.endImgWrapper}>
+            <section className={styles.newApply}>
+                <div className={styles.endImgWrapper}>
                     <img src={working} alt="" />
+                    <div>
+                        <button>Apply</button>
+                        <p>We are currently recruiting for the 25/26 season.</p>
                     </div>
+                </div>
+            </section>
         </>
     )
 }

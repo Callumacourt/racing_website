@@ -14,7 +14,6 @@ function TeamHistory() {
     return (
         <>
             <main className={styles.teamHistoryWrapper}>
-                <h1>Our Story</h1>
                 <section className={styles.year}>
                     <span className={styles.yearHeader}>
                         2024-2025
