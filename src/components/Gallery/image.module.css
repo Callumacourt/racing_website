@@ -1,3 +1,7 @@
+.imgContainer {
+    position: relative;
+}
+
 .imgContainer img {
     break-inside: avoid;
     margin-bottom: 1rem;

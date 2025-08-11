@@ -3,10 +3,11 @@
     margin-top: 3vh;
     position: relative;
     align-items: center;
+    justify-items: center;
 }
 
 .sponsorForm button {
-    grid-row: 4;
+    grid-row: 6;
     width: 90%;
     justify-self: center;
 }
@@ -51,6 +52,13 @@
         margin: auto;
     }
 
+    .sponsorForm button {
+        width: 75%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    
     .sponsorForm button {
         width: 75%;
     }

@@ -1,10 +1,10 @@
 import styles from './Sponsorship.module.css';
-import codingPhoto from '../../assets/images/team/general/codingPhotoR.jpg';
 import teamPhoto from '../../assets/images/team/gallery/bigTeam.jpg';
 import truck from '../../assets/images/icons/truck.svg';
 import cpu from '../../assets/images/icons/cpu.svg';
 import hardDrive from '../../assets/images/icons/hard-drive.svg';
 import SponsorForm from './SponsorForm';
+import Attribution from '../Attribution/Attribution';
 
 function Sponsorship() {
     return (
@@ -17,6 +17,9 @@ function Sponsorship() {
                         src={teamPhoto}
                         alt="A team photo of the team stood around an autonomous car"
                     />
+                    <Attribution 
+                    link={'https://www.flickr.com/photos/fsuk/albums/72177720327624335/with/54665933635'}
+                    /> 
                 </div>
             </section>
 

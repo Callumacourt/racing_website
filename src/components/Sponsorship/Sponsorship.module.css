@@ -35,7 +35,7 @@
     text-align: center;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: clamp(3em, 5vw, 3.25rem);
     z-index: 2;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
     margin-bottom: 2rem;
@@ -73,7 +73,7 @@
 }
 
 .pitchSection h3 {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: #ffffff;
@@ -81,7 +81,7 @@
 }
 
 .pitchSection h4 {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
     font-weight: 600;
     margin-bottom: 1rem;
     margin-top: 3rem;
@@ -90,7 +90,7 @@
 }
 
 .pitchSection p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
     margin-bottom: 2rem;
     line-height: 1.7;
     color: #d0d0d0;
@@ -110,13 +110,13 @@
 }
 
 .pitchSection ul li h5 {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 .pitchSection ul li p {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 1vw, 1.1rem);
 }
 
 .contactSection {
@@ -155,7 +155,7 @@
 
 /* === Tier section === */
 .tierSection h1 {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 700;
     text-align: center;
     margin-bottom: 1rem;
@@ -169,14 +169,14 @@
 }
 
 .tierSection h2 {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 2vw, 2rem);
     font-weight: 600;
     margin-bottom: 1.618rem;
     margin-top: 1.618rem;
 }
 
 .tierSection .tierPrice {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
     font-weight: 500;
     margin-bottom: 2rem;
 }
@@ -187,7 +187,7 @@
 }
 
 .tierSection ul li {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 1vw, 1.1rem);
     margin-bottom: 2rem;
 }
 
@@ -358,4 +358,27 @@
   .formSection small {
     margin-bottom: 10vh;
   }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .sponsorList {
+      justify-items: center;
+    }
+    
+    .sponsorList span {
+      justify-content: center;
+    }
+    
+    .sponsorList h5 {
+      margin-bottom: 0px !important;
+    }
+
+    .sponsorList li {
+      max-width: 550px;
+    }
+
+    .tierSection hr {
+      height: 3px;
+    }
 }

@@ -5,7 +5,7 @@ import logisticsImg from '../../assets/images/diagrams/logisticsImg.jpg'
 import pathImg from '../../assets/images/diagrams/pathPlanning.jpg'
 import controlImg from  '../../assets/images/diagrams/controlImg.jpg'
 import businessImg from '../../assets/images/diagrams/businessImg2.jpg'
-import working from '../../assets/images/team/gallery/working.jpg'
+import Attribution from '../Attribution/Attribution'
 
 function Hero () {
         return (
@@ -19,6 +19,9 @@ function Hero () {
                 <section className={styles.titleText}>
                     <p>Cardiff Autonomous Racing</p>
                 </section>
+                <Attribution 
+                link={'https://www.imeche.org/news/news-article/the-2020-fs-ai-competition-in-review'} 
+                />
             </main>
             <section className={styles.infoSection}>
                 <h2>Who are we?</h2>
@@ -73,6 +76,9 @@ function Hero () {
                         <img 
                             src={businessImg} 
                             alt="Bicycle model visualisation" />
+                            <Attribution 
+                            link={'https://www.imeche.org/news/news-article/fs2024-business-plan-presentation-special-condition'} 
+                            />
                     </div>
                     <p>Handle sponsorship acquisition, and financial management as well as
                         helping prepare us for our business presentation at Formula Student.</p>
@@ -105,15 +111,6 @@ function Hero () {
                         </p>
                         <button>Apply</button>
                     </section>
-                </div>
-            </section>
-            <section className={styles.newApply}>
-                <div className={styles.endImgWrapper}>
-                    <img src={working} alt="" />
-                    <div>
-                        <button>Apply</button>
-                        <p>We are currently recruiting for the 25/26 season.</p>
-                    </div>
                 </div>
             </section>
         </>

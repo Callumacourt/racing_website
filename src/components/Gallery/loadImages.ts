@@ -7,6 +7,7 @@ interface ImageModule {
 interface ImageMetadata {
     [key: string]: {
         alt?: string;
+        link?: string;
     };
 }
 
@@ -17,7 +18,8 @@ const loadImages = Object.entries(imageModules).map(([path, module]) => {
     return {
         id: id,
         img: module.default,
-        alt: (imageMetadata as ImageMetadata)[id]?.alt || `Image ${id}`
+        alt: (imageMetadata as ImageMetadata)[id]?.alt || `Image ${id}`,
+        link: (imageMetadata as ImageMetadata)[id]?.link
     }
 })
 

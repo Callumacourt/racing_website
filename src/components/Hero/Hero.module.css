@@ -62,7 +62,7 @@
     margin-top: 2vh;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
-    font-size: clamp(1.25rem, 3vw + 0.5rem, 2.5rem);
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
     color: white;
 }
 
@@ -74,9 +74,9 @@
 .infoSection h3 {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: clamp(1.1rem, 2vw + 0.5rem, 1.75rem);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
     color: lightblue;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5vh;
     margin-top: 0;
     letter-spacing: -0.01em;
 }
@@ -92,9 +92,9 @@
 .applySection button {
     margin-top: 2vh;
     border-radius: 10px;
-    font-size: 1.25rem;
+    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
     background-color:  #00bfa6;
-    padding: 2vmin 4vmin;
+    padding: 1.5vh 3vw;
     border: 2px solid black;
     color: white;
     font-family: 'Roboto';
@@ -241,41 +241,6 @@
         border-radius: 0 0 20px 20px; 
     }
 
-    .newApply div:nth-child(2) {
-        position: absolute;
-        left: 50vw;
-        top: 45vh;
-    }
-
-    .newApply {
-        font-size: 1.05rem;
-        font-family: 'Roboto';
-    }
-
-    .newApply button {
-        background-color: transparent;
-        color: black;
-        font-size: 1.05rem;
-        font-style: bold;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-        border: 2px solid black;
-        margin-bottom: 1.618rem;
-        padding: 1vh 4vw;
-        transition: background-color 0.2s ease-in-out, color 0.2s;
-    }
-
-    .newApply p {
-        color: black;
-    }
-
-    .newApply button:hover {
-        cursor: pointer;
-        background-color: black;
-        color: white;
-    }
-
     .logisticsSection, 
     .businessSection, 
     .controlSection, 
@@ -283,5 +248,44 @@
     .perceptionSection {
         margin-bottom: 7.5vh;
         text-align: start;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .infoSection {
+        padding: 12vw 6vw;
+    }
+
+    .rolesWrapper, .nonEngRolesWrapper {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+
+    .rolesWrapper section, .nonEngRolesWrapper section, .roleImgContainer {
+        max-width: none;
+        justify-items: center;
+    }
+    
+    /* Larger font sizing */
+    .infoSection h2 {
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        margin-bottom: 2.5vh;
+    }
+
+    .infoSection h3 {
+        font-size: clamp(1.75rem, 3vw, 2.25rem);
+        margin-bottom: 1.5vh;
+    }
+
+    .rolesWrapper p, .nonEngRolesWrapper p {
+        font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+        text-align: center;
+        padding: 1vh 2vw;
+        line-height: 1.5;
+    }
+    
+    .applySection button {
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+        padding: 1.5vh 3vw;
     }
 }

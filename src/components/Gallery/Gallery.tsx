@@ -10,6 +10,7 @@ interface ImageData {
   id: string;
   img: string;
   alt: string;
+  link?: string;
 }
 
 const images: ImageData[] = loadImages;
@@ -39,6 +40,7 @@ function Gallery() {
             key={image.id}
             src={image.img}
             alt={image.alt}
+            link = {image.link}
           />
         ))}
       </section>
