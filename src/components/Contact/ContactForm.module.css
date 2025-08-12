@@ -5,54 +5,77 @@
     text-align: center;
 }
 
+.contactForm span {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; 
+}
+
+.contactForm input, .contactForm textarea  {
+    width: 80%; 
+}
+
+.contactForm button {
+    width: 82.5%;
+    align-self: center;
+}
+
 .inputWrapper, .textAreaWrapper {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.618rem;
+    margin-bottom: 2rem; 
     align-items: center;
 }
 
-.inputWrapper label {
+.inputWrapper label, .textAreaWrapper label {
     align-self: flex-start;
+    margin-bottom: 1rem;
 }
 
 .contactForm textarea {
-    border-radius: 5px;
+    width: 80%;
     height: 15vh;
-    width: 90%;
     padding: 1vh 2vw;
-    margin-top: 1.618rem;
     font-family: 'Inter', sans-serif;
     background-color: transparent;
     color: white;
     border: 1px solid white;
+    border-radius: 5px;
+    max-height: 200px;
 }
 
 .textAreaWrapper {
-    margin-bottom: 0px;
+    margin-bottom: 2rem;
 }
 
 @media (min-width: 769px) {
     .contactForm {
         align-items: center;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:auto auto;
+    }
+
+    .contactForm span {
+        flex-direction: row;
+        grid-column: 1/3;
+        width: 100%;
     }
     
     .contactForm button {
-        width: 50%;
+        width: 70%;
     }
 
-    .contactForm textarea {
-        width: 75%;
-    }
-
-    .inputWrapper, .textAreaWrapper {
-        margin-bottom: 0px;
+    .contactForm textarea, .contactForm span {
+        width: 70%;
     }
 
     .inputWrapper {
-        align-items: start;
+        width: 90%; 
+    }
+
+    .contactForm input {
+        width: 100%;
+        text-align: center;
     }
 
     .textAreaWrapper {

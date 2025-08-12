@@ -67,6 +67,7 @@ function ContactForm () {
     return (
         <>
         <form className = {styles.contactForm} onSubmit={handleSubmit} noValidate>
+            <span>
             <div className={styles.inputWrapper}>
             <FormInput
                     name={'fullName'}
@@ -92,6 +93,7 @@ function ContactForm () {
                     required={true}
                 />
             </div>
+            </span>
 
             <input 
             type="text" 

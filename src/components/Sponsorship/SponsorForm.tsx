@@ -107,7 +107,7 @@ function SponsorForm() {
             <div className={styles.inputWrapper}>
                 <FormInput
                     name="contactNumber"
-                    label="Contact Number"
+                    label="Telephone"
                     type="tel"
                     value={formDetails.contactNumber}
                     onChange={handleFormChange}
