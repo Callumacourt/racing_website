@@ -6,6 +6,8 @@ import pathImg from '../../assets/images/diagrams/pathPlanning.jpg'
 import controlImg from  '../../assets/images/diagrams/controlImg.jpg'
 import businessImg from '../../assets/images/diagrams/businessImg2.jpg'
 import Attribution from '../Attribution/Attribution'
+import { Link } from 'react-router-dom'
+import ApplyForm from './ApplyForm/ApplyForm'
 
 function Hero () {
         return (
@@ -106,10 +108,8 @@ function Hero () {
                     </section>
                     <section className = {styles.applySection}>
                         <h2>How do I get involved?</h2>
-                        <p>Click the button below to fill out the response and we'll consider
-                            your application when our recruitment season opens
-                        </p>
-                        <button>Apply</button>
+                        <p>Enter your Cardiff University email and we'll be in touch</p>
+                        <ApplyForm/>
                     </section>
                 </div>
             </section>

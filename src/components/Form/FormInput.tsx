@@ -41,6 +41,7 @@ function FormInput ({
                 value={value}
                 onChange={(e) => onChange(name, e.currentTarget.value)}
                 required={required}
+                aria-label={label}
                 className={error ? styles.inputError : ''}
             />
         )

@@ -90,7 +90,6 @@
 }
 
 .applySection button {
-    margin-top: 2vh;
     border-radius: 10px;
     font-size: clamp(1.1rem, 1.8vw, 1.3rem);
     background-color:  #00bfa6;
@@ -98,7 +97,6 @@
     border: 2px solid black;
     color: white;
     font-family: 'Roboto';
-    margin-bottom: 5vh;
 }
 
 .rolesWrapper p, .nonEngRolesWrapper p{
@@ -198,9 +196,7 @@
     }
 
     .applySection button {
-        margin-top: 4vh;
-        width: 300px;
-        padding: 18px 40px;
+        padding: 18px 10px;
         font-size: 1.2rem;
         font-weight: 600;
         border-radius: 12px;
@@ -209,8 +205,6 @@
     }
 
     .applySection button:hover {
-        transform: translateY(-2px);
-        background-color: #00d4aa;
         cursor: pointer;
     }
 
@@ -266,7 +260,6 @@
         justify-items: center;
     }
     
-    /* Larger font sizing */
     .infoSection h2 {
         font-size: clamp(2rem, 4vw, 2.75rem);
         margin-bottom: 2.5vh;

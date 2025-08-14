@@ -117,7 +117,7 @@ h1 {
         align-items: flex-start;
         margin-bottom: 10rem;
         justify-content: space-between;
-        gap: 4vw; /* Reduce from 10vw for less extreme spacing */
+        gap: 4vw; 
     }
 
     .timelineItem.left {
