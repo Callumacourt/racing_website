@@ -14,8 +14,8 @@ function FormEnd ({
         <>
           <>
             <div className = {submitError ? styles.activeSubmitErr : styles.hiddenSubmitErr}>
-              <p>Something went wrong with your request, please try again or email us directly at</p>
-              <a href="mailto:callumacourtt@gmail.com?subject=enquiry">click here</a>
+              <p>Something went wrong with your request, please try again or click here to email us</p>
+              <a href="mailto:callumacourtt@gmail.com?subject=sponsorEnquiry">cardiffautonomousracing@cardiff.ac.uk</a>
             </div>
           </>
          <button 

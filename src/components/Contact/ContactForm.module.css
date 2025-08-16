@@ -23,7 +23,6 @@
 .inputWrapper, .textAreaWrapper {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2rem; 
     align-items: center;
 }
 
@@ -35,7 +34,7 @@
 .contactForm textarea {
     width: 80%;
     height: 15vh;
-    padding: 1vh 2vw;
+    padding: 1vh 1vw;
     font-family: 'Inter', sans-serif;
     background-color: transparent;
     color: white;
@@ -44,9 +43,6 @@
     max-height: 200px;
 }
 
-.textAreaWrapper {
-    margin-bottom: 2rem;
-}
 
 @media (min-width: 769px) {
     .contactForm {

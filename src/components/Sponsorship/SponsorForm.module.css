@@ -3,7 +3,7 @@
     margin-top: 3vh;
     position: relative;
     align-items: center;
-    padding: 40px;
+    padding: 0px 30px;
     max-width: 750px;
     justify-items: center;
 }
@@ -30,15 +30,16 @@
 .inputWrapper {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.618rem;
+    margin-bottom: 1vh;
     width: 80%;
     max-width: 400px;
     min-width: 200px;
-    padding: 12px 16px;
+    padding: 1.5vh 0px;
 }
 
 .inputWrapper input {
     justify-self: center;
+    margin-top: 1vh;
 }
 
 .inputWrapper label {
@@ -50,15 +51,18 @@
     
     .inputWrapper {
         margin: 0 auto;
+        padding: 16px 12px;
     }
 
     .sponsorForm {
         align-items: center;
         margin: auto;
+        padding: 40px;
     }
 
     .sponsorForm button {
         width: 75%;
+        margin-top: 0px;
     }
 }
 

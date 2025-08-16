@@ -82,7 +82,6 @@ function Sponsorship() {
                     <em>Each subsequent tier contains the previous tier(s) material</em>
                 </p>
 
-                <hr className={styles.bronzeHr} />
                 <section className={styles.tierOne}>
                     <h2>Tier One</h2>
                     <p className={styles.tierPrice}>This package is for sponsorship worth up to £250</p>
@@ -91,8 +90,6 @@ function Sponsorship() {
                         <li>Dedicated posts on our social media platforms</li>
                     </ul>
                 </section>
-
-                <hr className={styles.silverHr} />
                 <section className={styles.tierTwo}>
                     <h2>Tier Two</h2>
                     <p className={styles.tierPrice}>Package for sponsorship worth up to £1000</p>
@@ -111,10 +108,7 @@ function Sponsorship() {
                             to your own web page.
                         </li>
                     </ul>
-                </section>
-
-                <hr className={styles.goldHr} />
-                <section className={styles.tierThree}>
+                </section>               <section className={styles.tierThree}>
                     <h2>Tier Three</h2>
                     <p className={styles.tierPrice}>Package for sponsorship worth over £1000</p>
                     <ul>

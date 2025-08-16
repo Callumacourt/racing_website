@@ -4,7 +4,7 @@
 
 .imgContainer img {
     break-inside: avoid;
-    margin-bottom: 1rem;
+    margin-bottom: 1vw;
 }
 
 
@@ -68,4 +68,9 @@
     .expandedImg {
         left: auto;
     }
+
+    .imgContainer img {
+        margin-bottom: 0.5vw;
+    }
+
 }

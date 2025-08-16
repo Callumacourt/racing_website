@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* === Base styles === */
 .sponsorWrapper {
     background-color: #1a1a2e;
     color: white;
@@ -12,9 +11,7 @@
     font-family: 'Source Sans Pro';
 }
 
-/* === Hero === */
-
-  .imgContainer::after {
+.imgContainer::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -34,15 +31,12 @@
     width: 100%;
     text-align: center;
     font-family: 'Lato', sans-serif;
-    font-weight: 700;
-    font-size: clamp(3em, 5vw, 3.25rem);
+    font-weight: 600;
+    font-size: clamp(3rem, 8vw, 3.5rem);
     z-index: 2;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
     margin-bottom: 2rem;
-}
-
-.tierSection h2 {
-    font-family: 'Lato' !important;
+    line-height: 1.2;
 }
 
 .imgContainer {
@@ -59,7 +53,6 @@
     object-position: center;
 }
 
-/* === Content sections === */
 .pitchSection,
 .tierSection,
 .previousSponsors,
@@ -72,31 +65,30 @@
 }
 
 .pitchSection h3 {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
     color: #ffffff;
     text-align: center;
+    line-height: 1.3;
 }
 
 .pitchSection h4 {
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-size: clamp(1.35rem, 4vw, 2rem);
     font-weight: 600;
     margin-bottom: 1rem;
-    margin-top: 3rem;
+    margin-top: 3.5rem;
     color: #e0e0e0;
     text-align: center;
+    line-height: 1.3;
 }
 
 .pitchSection p {
-    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-size: clamp(1.05rem, 3vw, 1.25rem);
     margin-bottom: 2rem;
     line-height: 1.7;
     color: #d0d0d0;
     text-align: center;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .pitchSection ul {
@@ -109,20 +101,21 @@
 }
 
 .pitchSection ul li h5 {
-    font-size: clamp(1rem, 1.2vw, 1.25rem);
+    font-size: clamp(1.15rem, 2.5vw, 1.25rem);
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    color: #e0e0e0;
 }
 
 .pitchSection ul li p {
-    font-size: clamp(0.95rem, 1vw, 1.1rem);
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    text-align: left;
 }
 
 .contactSection {
     padding-top: 2.5vh;
 }
 
-/* === Sponsor list === */
 .sponsorList {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
@@ -136,6 +129,7 @@
     gap: 1.618rem;
     align-items: center;
     background-color: #2e2e4d;
+    border: 0.5px solid white;
     border-radius: 25px;
     padding: 5%;
 }
@@ -145,39 +139,48 @@
 
 .sponsorList li p {
     margin-bottom: 4vh;
+    text-align: center !important;
 }
 
 .sponsorList span {
   display: flex;
+  align-items: center;
+  margin-inline:auto;
   gap: 1rem;
 }
 
-/* === Tier section === */
+.sponsorList h5 {
+  margin-bottom: 0px !important;
+}
+
 .tierSection h1 {
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: 700;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
 }
 
 .tierSection .tierSubtext {
-    font-size: 1rem;
+    font-size: clamp(1.05rem, 2vw, 1.1rem);
     font-style: italic;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .tierSection h2 {
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    font-weight: 600;
-    margin-bottom: 1.618rem;
-    margin-top: 1.618rem;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    margin-top: 1.25rem;
+    font-family: 'Lato' !important;
+    line-height: 1.3;
 }
 
 .tierSection .tierPrice {
-    font-size: clamp(1rem, 1.2vw, 1.25rem);
-    font-weight: 500;
-    margin-bottom: 2rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+    font-weight: 400;
+    margin-bottom: 2.5rem;
 }
 
 .tierSection ul {
@@ -186,21 +189,17 @@
 }
 
 .tierSection ul li {
-    font-size: clamp(0.95rem, 1vw, 1.1rem);
-    margin-bottom: 2rem;
+    font-size: clamp(1.05rem, 2vw, 1.1rem);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
 }
 
-/* === Tier colours === */
-.bronzeHr {
-    background-color: #c2885c;
-}
-
-.silverHr {
-    background-color: #b0b0b0;
-}
-
-.goldHr {
-    background-color: #d4af37;
+.tierSection section {
+  background-color: 	#2e2e4d;
+  padding: 2vh 6vw;
+  border-radius: 25px;
+  margin: 2vh;
+  margin-bottom: 6vh;
 }
 
 .tierOne h5 {
@@ -215,22 +214,49 @@
     color: #d4af37;
 }
 
+  .tierPrice {
+    font-style: italic;
+    margin-bottom: 4vh;
+  }
 
-/* === Form section === */
+  .tierOne {
+    border-top: 3px solid #c2885c;
+  }
+
+  .tierOne h2 {
+    color: #c2885c;
+  }
+
+  .tierTwo {
+    border-top: 3px solid #b0b0b0; ;
+  }
+
+  .tierTwo h2 {
+    color: #b0b0b0;
+  }
+
+  .tierThree {
+    border-top: 3px solid#d4af37;;
+  }
+
+  .tierThree h2 {
+    color: #d4af37;
+  }
 
 .formSection {
     padding: 2vh 4vw;
 }
 
 .formSection h3 {
-    font-size: 2rem;
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
     font-weight: 600;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
 }
 
 .formSection small {
-    font-size: 0.9rem;
+    font-size: clamp(0.95rem, 2vw, 1rem);
     display: block;
     text-align: center;
     margin-bottom: 2rem;
@@ -248,10 +274,6 @@
   .pitchSection {
     padding-top: 10vh;
     grid-template-columns: 1fr 1fr;
-  }
-
-  .formSection {
-    padding: 2vh 8vw;
   }
 
   .sponsorList {
@@ -273,11 +295,10 @@
   }
 
   .sponsorList span {
-    display: grid;
+    display: flex;
     width: 100%;
-    grid-template-columns: 30px 1fr;
-    justify-items: start;
-    align-items: center;
+    justify-content: center;
+    align-content: center;
   }
 
   .tierSection {
@@ -333,14 +354,11 @@
     opacity: 0.;
   }
 
-  hr {
-    display: none;
-  }
-
   .formSection {
     margin-top: 2vh;
     display: flex;
     align-items: center;
+    padding: 2vh 4vw 8vh 4vw;
     flex-direction: column;
   }
 
@@ -353,10 +371,6 @@
     grid-template-rows: auto;
     width: 70%;
     border-radius: 20px;
-  }
-
-  .formSection small {
-    margin-bottom: 10vh;
   }
 }
 
@@ -376,9 +390,5 @@
 
     .sponsorList li {
       max-width: 550px;
-    }
-
-    .tierSection hr {
-      height: 3px;
     }
 }

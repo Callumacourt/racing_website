@@ -69,7 +69,7 @@ function TeamHistory() {
                                     <img src={code} alt="An icon representing coding" />
                                 </span>
                                 <p>
-                                    We then underwent the development process, which had many ups and downs. We would meet
+                                    Then began the development process, which had many ups and downs. We would meet
                                     biweekly in the ABACWS building initially to research the requirements of building an
                                     autonomous system together. These meetings later became for progress reports from
                                     subteams and simultaneous development as we began to understand what we were doing.
@@ -79,8 +79,8 @@ function TeamHistory() {
                                 <img src={working} alt="Development process" />
                             </div>
                         </div>
-
-                        <div className={`${styles.timelineItem} ${styles.right}`}>
+                    
+                        <div className={`${styles.timelineItem} ${styles.right} ${styles.lastItem}`}>
                             <div className={styles.timelineMarker}></div>
                             <div className={styles.timelineContent}>
                                 <span>
