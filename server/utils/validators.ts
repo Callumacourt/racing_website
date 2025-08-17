@@ -4,7 +4,7 @@ export function validateEmail (email:string) {
 }
 
 export function validateMobile(mobile:string) {
-    const re = /^(?:\+44|0)7\d{3}[ -]?\d{3}[ -]?\d{3}$/;
+    const re = /^(?:\+?\d{1,3}[ -]?)?(?:\d[ -]?){6,14}\d$/;
     return re.test(mobile);
 }
 
@@ -34,7 +34,7 @@ export function sanitiseInput(input: string | null | undefined): string {
 
 export function validateInputTypes(data: Record<string, any>): boolean {
     for (const [key, value] of Object.entries(data)) {
-        if (value !== null && value !== undefined && typeof value !== 'string') {
+        if (typeof value !== 'string') {
             return false;
         }
     }

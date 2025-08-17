@@ -3,6 +3,7 @@
 import { Resend } from 'resend';
 import fs from 'fs';
 import path from 'path';
+import { resetDailyApplications } from './daily';
 
 const resend = new Resend(process.env.resendKey);
 const filePath = path.resolve(__dirname, '../data/applications.json');
@@ -20,25 +21,18 @@ export async function sendDailyDigest() {
     return; // nothing to send
   }
 
-  const yesterday = new Date(Date.now() - 24*60*60*1000);
-  const todaysEmails = data.filter(
-    (e: ApplicationEvent) => new Date(e.timestamp) > yesterday
-  );
+  if (data.length === 0) return;
 
-  if (todaysEmails.length === 0) return;
-
-  const listHtml = todaysEmails.map(e => `<li>${e.email}</li>`).join('');
+  const listHtml = data.map(e => `<li>${e.email}</li>`).join('');
 
   await resend.emails.send({
     from: 'onboarding@resend.dev',
     to: process.env.email_to ?? '',
-    subject: `Daily Applications Digest (${todaysEmails.length})`,
-    html: `<h1>Today's Applications</h1><ul>${listHtml}</ul>`
+    subject: `Applications Digest (${data.length})`,
+    html: `<h1>Applications</h1><ul>${listHtml}</ul>`
   });
 
-  // Remove sent emails
-  const remaining = data.filter(
-    (e: ApplicationEvent) => new Date(e.timestamp) <= yesterday
-  );
-  fs.writeFileSync(filePath, JSON.stringify(remaining, null, 2));
+  // Clear all applications after sending digest
+  fs.writeFileSync(filePath, JSON.stringify([], null, 2));
 }
+

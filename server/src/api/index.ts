@@ -6,11 +6,9 @@ import { sanitiseContactData, validateContactData, sanitiseSponsorData, validate
 import { validateEmail } from '../../utils/validators';
 import { sendContactEmail, sendSponsorEmail } from '../../services/emailService';
 import helmet from 'helmet';
-import fs from 'fs';
-import { timeStamp } from 'console';
-import { date } from 'zod/v4/classic/iso.cjs';
-import { sendDailyDigest } from './digest'; // adjust path as needed
-import path from 'path';
+import { sendDailyDigest } from './digest'; 
+import { addToMemory, isInMemory } from './memory';
+import { addDailyApplication, resetDailyApplications } from './daily';
 
 const app = express();
 app.use(helmet());
@@ -75,35 +73,31 @@ app.post('/api/sponsor', async (req, res) => {
 });
 
 app.post('/api/apply', async (req, res) => {
+  // Validate types
   try {
     const typeValidation = validateInput(req.body);
     if (!typeValidation.isValid) {
       return res.status(400).json({ success: false, error: typeValidation.error });
     }
 
+    // Validate email format
     const email = req.body.email;
 
-    if (!validateEmail(email)) {
+    if (!validateEmail(email) || (!/^[A-Za-z0-9._%+-]+@cardiff\.ac\.uk$/i.test(email))) {
       return res.status(400).json({ success: false, error: 'Invalid email format' });
     }
 
-    if (!/^[A-Za-z0-9._%+-]+@cardiff\.ac\.uk$/i.test(email)) {
-      return res.status(400).json({ error: 'Invalid Cardiff uni email' });
+    // Reject if email in stored memory
+    if (await isInMemory(email) === true) {
+      return res.status(400).json({ success: false, error: 'Already applied' })
     }
 
-    const filePath = path.resolve(__dirname, '../data/applications.json');
-    let data = [];
-    try {
-      data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    } catch (err) {
-      console.log('no file')
-    }
+    // Append to daily applications for daily digest and record memory
+    addDailyApplication(email, new Date().toISOString());
+    addToMemory(email);
 
-    data.push({ email, timestamp: new Date().toISOString() });
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-
-    res.status(200).json({ success: true, message: 'Email submitted!' });
-    console.log('email sent')
+    res.status(200).json({ success: true, message: 'Email stored for digest' });
+    console.log('Email stored for digest')
 
   } catch (error) {
     console.log('Apply endpoint error', error);
