@@ -9,118 +9,118 @@ import Attribution from '../Attribution/Attribution'
 import ApplyForm from './ApplyForm/ApplyForm'
 import carImg800 from '../../assets/images/team/general/carimg800.webp'
 import carImg1280 from '../../assets/images/team/general/carimg1280.webp'
-import carImg1920 from '../../assets/images/team/general/carimg1900.webp';
+import carImg1920 from '../../assets/images/team/general/carimg1900.webp'
 
 function Hero () {
-        return (
+    return (
         <>
             <main className={styles.imgContainer}>
                 <picture>
                     <source
-  srcSet={`
-    ${carImg800} 800w,
-    ${carImg1280} 1280w,
-    ${carImg1920} 1920w
-  `}
-  type="image/webp"
-  sizes="100vw"
-/>
+                        srcSet={`
+                            ${carImg800} 800w,
+                            ${carImg1280} 1280w,
+                            ${carImg1920} 1920w
+                        `}
+                        type="image/webp"
+                        sizes="100vw"
+                    />
                     <img
                         className={styles.heroImg}
-                        src={carImg} 
+                        src={carImg}
                         alt="An image of an autonomous race car"
                         width="1920"
                         height="1080"
                         loading="eager"
                         fetchPriority="high"
-                        style={{ width: '100%', height: 'auto' }}
+                        style={{ width: '100%'}}
                     />
                 </picture>
                 <section className={styles.titleText}>
                     <p>Cardiff Autonomous Racing</p>
                 </section>
                 <Attribution 
-                link={'https://www.imeche.org/news/news-article/the-2020-fs-ai-competition-in-review'} 
+                    link={'https://www.imeche.org/news/news-article/the-2020-fs-ai-competition-in-review'} 
                 />
             </main>
             <section className={styles.infoSection}>
                 <h2>Who are we?</h2>
-                <p>Cardiff Autonomous Racing is a self driving racing Team
+                <p>
+                    Cardiff Autonomous Racing is a self driving racing Team
                     run and operated by Cardiff University Students, previously
                     sponsored by the likes of IBM and Delaware. Our aim
                     is to produce a competitive autonomous racing car system that will
                     compete in Formula Student's AI events with their provided cars and we 
                     are currently looking for enthusiastic team members for the 2026 season.
                 </p>
-                
-                <h2 className = {styles.qAndA}>What roles are available?</h2>
+                <h2 className={styles.qAndA}>What roles are available?</h2>
                 <h2>Engineering Roles</h2>
-                
                 <div className={styles.rolesWrapper}>
-                <section className={styles.perceptionSection}>
-                    <h3>Perception</h3>
-                    <div className={styles.roleImgContainer}>
-                        <img 
-                        loading='lazy'
-                        src={perceptionImg} 
-                        alt="A visualisation of YOLO cone detection for an autonomous race system" />
-                    </div>
-                    <p>Work on computer vision and object detection systems that allow our car to "see" and understand its environment. This includes cone detection, track boundary recognition, and real-time image processing.</p>
-                </section>
-                
-                <section className={styles.pathSection}>
-                    <h3>Path Planning</h3>
-                    <div className={styles.roleImgContainer}>
-                        <img 
-                        loading='lazy'
-                        src={pathImg} 
-                        alt="Path planning visualization" />
-                    </div>
-                    <p>Develop algorithms that determine the optimal racing line and trajectory for the autonomous vehicle to follow around the track.</p>
-                </section>
-                
-                <section className={styles.controlSection}>
-                    <h3>Control Systems</h3>
-                    <div className={styles.roleImgContainer}>
-                    <img 
-                        loading='lazy'
-                        src={controlImg} 
-                        alt="Bicycle model visualisation" />
-                    </div>
-                    <p>Implement control systems that translate path planning decisions into actual vehicle movements, managing steering, acceleration, and braking.</p>
-                </section>
-                </div>
-
-                <h2>Non Engineering Roles</h2>
-                <div className = {styles.nonEngRolesWrapper}>
-                <section className={styles.businessSection}>
-                    <h3>Business</h3>
-                    <div className={styles.roleImgContainer}>
-                        <img 
-                            loading='lazy'
-                            src={businessImg} 
-                            alt="Bicycle model visualisation" />
-                            <Attribution 
-                            link={'https://www.imeche.org/news/news-article/fs2024-business-plan-presentation-special-condition'} 
+                    <section className={styles.perceptionSection}>
+                        <h3>Perception</h3>
+                        <div className={styles.roleImgContainer}>
+                            <img 
+                                loading='lazy'
+                                src={perceptionImg} 
+                                alt="A visualisation of YOLO cone detection for an autonomous race system"
                             />
-                    </div>
-                    <p>Handle sponsorship acquisition, and financial management as well as
-                        helping prepare us for our business presentation at Formula Student.</p>
-                </section>
-                
-                <section className={styles.logisticsSection}>
-                    <h3>Logistics</h3>
-                    <div className={styles.roleImgContainer}>
-                        <img 
-                        loading='lazy'
-                            src={logisticsImg} 
-                            alt="An image of people planning out tasks in a notepad" />
-                    </div>
-                    <p>Coordinate team activities, manage equipment, organise travel to competitions, and ensure smooth day to day operations.</p>
-                </section>
+                        </div>
+                        <p>Work on computer vision and object detection systems that allow our car to "see" and understand its environment. This includes cone detection, track boundary recognition, and real-time image processing.</p>
+                    </section>
+                    <section className={styles.pathSection}>
+                        <h3>Path Planning</h3>
+                        <div className={styles.roleImgContainer}>
+                            <img 
+                                loading='lazy'
+                                src={pathImg} 
+                                alt="Path planning visualization"
+                            />
+                        </div>
+                        <p>Develop algorithms that determine the optimal racing line and trajectory for the autonomous vehicle to follow around the track.</p>
+                    </section>
+                    <section className={styles.controlSection}>
+                        <h3>Control Systems</h3>
+                        <div className={styles.roleImgContainer}>
+                            <img 
+                                loading='lazy'
+                                src={controlImg} 
+                                alt="Bicycle model visualisation"
+                            />
+                        </div>
+                        <p>Implement control systems that translate path planning decisions into actual vehicle movements, managing steering, acceleration, and braking.</p>
+                    </section>
+                </div>
+                <h2>Non Engineering Roles</h2>
+                <div className={styles.nonEngRolesWrapper}>
+                    <section className={styles.businessSection}>
+                        <h3>Business</h3>
+                        <div className={styles.roleImgContainer}>
+                            <img 
+                                loading='lazy'
+                                src={businessImg} 
+                                alt="Bicycle model visualisation"
+                            />
+                            <Attribution 
+                                link={'https://www.imeche.org/news/news-article/fs2024-business-plan-presentation-special-condition'} 
+                            />
+                        </div>
+                        <p>Handle sponsorship acquisition, and financial management as well as
+                            helping prepare us for our business presentation at Formula Student.</p>
+                    </section>
+                    <section className={styles.logisticsSection}>
+                        <h3>Logistics</h3>
+                        <div className={styles.roleImgContainer}>
+                            <img 
+                                loading='lazy'
+                                src={logisticsImg} 
+                                alt="An image of people planning out tasks in a notepad"
+                            />
+                        </div>
+                        <p>Coordinate team activities, manage equipment, organise travel to competitions, and ensure smooth day to day operations.</p>
+                    </section>
                 </div>
                 <div>
-                    <section className = {styles.experience}>
+                    <section className={styles.experience}>
                         <h2>What experience do I need?</h2>
                         <p>You don't need any previous experience in order to join the team,
                             we are happy to teach you anything you need to know and application
@@ -129,7 +129,7 @@ function Hero () {
                             to the team.
                         </p>
                     </section>
-                    <section className = {styles.applySection}>
+                    <section className={styles.applySection}>
                         <h2>How do I get involved?</h2>
                         <p>Enter your Cardiff University email and we'll be in touch</p>
                         <ApplyForm/>

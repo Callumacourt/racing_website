@@ -4,15 +4,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Merriweather:wght@700&family=Oswald:wght@700&family=Lora:wght@700&display=swap');
 
 .imgContainer {
-    width: 100vw;
-    height: 100vh;              /* Fill the viewport height */
-    min-height: 100svh;         /* Use small viewport height for mobile browsers */
+    width: 100%;
+    height: 100vh;            
+    min-height: 100svh;         
     overflow: hidden;
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
     margin-top: 0;
 }
 
@@ -33,11 +29,15 @@
 
 .heroImg {
     width: 100vw;
-    height: 100vh;              /* Fill the container */
+    height: 100vh;           
     min-height: 100svh;
     object-fit: cover;
-    object-position: 18% center;
+    object-position: 18% 50%;
     display: block;
+}
+
+.heroImg img {
+    height: 100vh;
 }
 
 .roleImgContainer {
@@ -259,6 +259,10 @@
     .perceptionSection {
         margin-bottom: 7.5vh;
         text-align: start;
+    }
+
+    .heroImg {
+        object-position: 18% 50%;
     }
 }
 
