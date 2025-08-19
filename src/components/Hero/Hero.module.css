@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Merriweather:wght@700&family=Oswald:wght@700&family=Lora:wght@700&display=swap');
 
 .imgContainer {
-    width: 100%;
-    height: 95vh;
+    width: 100vw;
+    height: 100vh;              /* Fill the viewport height */
+    min-height: 100svh;         /* Use small viewport height for mobile browsers */
     overflow: hidden;
     position: relative;
     left: 50%;
@@ -30,10 +32,12 @@
 }
 
 .heroImg {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;              /* Fill the container */
+    min-height: 100svh;
     object-fit: cover;
     object-position: 18% center;
+    display: block;
 }
 
 .roleImgContainer {
@@ -102,7 +106,19 @@
 
 .rolesWrapper p, .nonEngRolesWrapper p{
     margin-bottom: 7.5vh;
-    text-align: start;
+    text-align: center;
+}
+
+.rolesWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.rolesWrapper section, .nonEngRolesWrapper section {
+    justify-items: center;
+    text-align: center;
+    align-items: center;
 }
 
 .applySection {
@@ -252,8 +268,28 @@
         padding: 12vw 6vw;
     }
 
+    .rolesWrapper {
+        row-gap: 0px;
+    }
+
+    .perceptionSection, .pathSection {
+        margin-bottom: 2.5vh;
+    }
+
+    .controlSection {
+        grid-column: 1/-1;
+    }
+
+    .controlSection p {
+        max-width: 75%;
+    }
+
     .rolesWrapper, .nonEngRolesWrapper {
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(405px, 1fr));
+    }
+
+    .nonEngRolesWrapper {
+        column-gap: 2.5rem;
     }
 
     .rolesWrapper section, .nonEngRolesWrapper section, .roleImgContainer {

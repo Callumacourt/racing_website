@@ -1,4 +1,4 @@
-import carImg from '../../assets/images/team/general/carimg.jpg'
+import carImg from '../../assets/images/team/general/carimg.webp'
 import styles from './Hero.module.css'
 import perceptionImg from '../../assets/images/diagrams/perceptionImg2.jpg'
 import logisticsImg from '../../assets/images/diagrams/logisticsImg.jpg'
@@ -6,18 +6,36 @@ import pathImg from '../../assets/images/diagrams/pathPlanning.jpg'
 import controlImg from  '../../assets/images/diagrams/controlImg.jpg'
 import businessImg from '../../assets/images/diagrams/businessImg2.jpg'
 import Attribution from '../Attribution/Attribution'
-import { Link } from 'react-router-dom'
 import ApplyForm from './ApplyForm/ApplyForm'
+import carImg800 from '../../assets/images/team/general/carimg800.webp'
+import carImg1280 from '../../assets/images/team/general/carimg1280.webp'
+import carImg1920 from '../../assets/images/team/general/carimg1900.webp';
 
 function Hero () {
         return (
         <>
             <main className={styles.imgContainer}>
-                <img 
-                className={styles.heroImg} 
-                src={carImg} 
-                alt="An image of an autonomous race car" 
-                />
+                <picture>
+                    <source
+  srcSet={`
+    ${carImg800} 800w,
+    ${carImg1280} 1280w,
+    ${carImg1920} 1920w
+  `}
+  type="image/webp"
+  sizes="100vw"
+/>
+                    <img
+                        className={styles.heroImg}
+                        src={carImg} 
+                        alt="An image of an autonomous race car"
+                        width="1920"
+                        height="1080"
+                        loading="eager"
+                        fetchPriority="high"
+                        style={{ width: '100%', height: 'auto' }}
+                    />
+                </picture>
                 <section className={styles.titleText}>
                     <p>Cardiff Autonomous Racing</p>
                 </section>
@@ -43,6 +61,7 @@ function Hero () {
                     <h3>Perception</h3>
                     <div className={styles.roleImgContainer}>
                         <img 
+                        loading='lazy'
                         src={perceptionImg} 
                         alt="A visualisation of YOLO cone detection for an autonomous race system" />
                     </div>
@@ -53,6 +72,7 @@ function Hero () {
                     <h3>Path Planning</h3>
                     <div className={styles.roleImgContainer}>
                         <img 
+                        loading='lazy'
                         src={pathImg} 
                         alt="Path planning visualization" />
                     </div>
@@ -63,6 +83,7 @@ function Hero () {
                     <h3>Control Systems</h3>
                     <div className={styles.roleImgContainer}>
                     <img 
+                        loading='lazy'
                         src={controlImg} 
                         alt="Bicycle model visualisation" />
                     </div>
@@ -76,6 +97,7 @@ function Hero () {
                     <h3>Business</h3>
                     <div className={styles.roleImgContainer}>
                         <img 
+                            loading='lazy'
                             src={businessImg} 
                             alt="Bicycle model visualisation" />
                             <Attribution 
@@ -90,6 +112,7 @@ function Hero () {
                     <h3>Logistics</h3>
                     <div className={styles.roleImgContainer}>
                         <img 
+                        loading='lazy'
                             src={logisticsImg} 
                             alt="An image of people planning out tasks in a notepad" />
                     </div>
