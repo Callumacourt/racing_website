@@ -1,4 +1,4 @@
-import Layout from "./Layout"
+import Layout from "./layout"
 import App from "./App"
 import ContactPage from './Pages/ContactPage'
 import GalleryPage from './Pages/GalleryPage'
