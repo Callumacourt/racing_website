@@ -4,6 +4,8 @@ import FormEnd from  '../Form/FormEnd'
 import styles from './ContactForm.module.css'
 import { useState } from 'react'
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 function ContactForm () {
 
     const [submitError, setSubmitError] = useState(false);
@@ -36,7 +38,7 @@ function ContactForm () {
             setIsSubmitting(true)
 
             try {
-                const res = await fetch('http://localhost:3000/api/contact', {
+                const res = await fetch(`${apiUrl}/contact`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

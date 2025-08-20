@@ -6,7 +6,8 @@ import { useState, FormEvent } from 'react';
 
 function SponsorForm() {
     const [submitError, setSubmitError] = useState(false);
-
+    const apiUrl = import.meta.env.VITE_API_URL;
+    
     const {
         formDetails,
         formErrors,
@@ -35,7 +36,7 @@ function SponsorForm() {
             setIsSubmitting(true);
 
             try {
-                const res = await fetch('http://localhost:3000/api/sponsor', {
+                const res = await fetch(`${apiUrl}/apply`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
