@@ -349,11 +349,6 @@
   .tierThree h2 {
     color: #d4af37;
   }
-
-  .tierOne h2, .tierTwo h2, .tierThree h2 {
-    opacity: 0.;
-  }
-
   .formSection {
     margin-top: 2vh;
     display: flex;

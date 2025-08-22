@@ -65,11 +65,37 @@
     background-color: #00a693;
 }
 
+.errorContainer {
+    margin-top: 1vh;
+    width: 100%;
+    min-height: 60px; /* or whatever fits your error message */
+    height: 60px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: height 0.3s;
+}
+
 .errorMessage {
-    display: block;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
     color: red;
-    margin-top: 8px;
     font-size: 0.9rem;
+    pointer-events: none;
+}
+
+.errorMessage.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 @keyframes spin {

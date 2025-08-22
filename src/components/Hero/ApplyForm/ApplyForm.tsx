@@ -85,21 +85,24 @@ function ApplyForm() {
             </form>
             
             <div className={styles.errorContainer}>
-                {error && <small className={styles.errorMessage}>{error}</small>}
-                {submitError && (
-                    <small className={styles.errorMessage}>
-                        You've {submitError.toLowerCase()}, thank you we'll get back to you asap.
-                        {submitError !== 'Already applied' && (
-                            <>
-                                <br />
-                                Submission Error: Please try again or click here to email us{" "}
-                                <a href="mailto:cardiffautonomousracing@cardiff.ac.uk?subject=Team%20application&body=Hello,%20I%20would%20like%20to%20apply.">
-                                    cardiffautonomousracing@cardiff.ac.uk
-                                </a>
-                            </>
-                        )}
-                    </small>
-                )}
+                <small className={`${styles.errorMessage} ${error ? styles.active : ""}`}>
+                    {error}
+                </small>
+                <small className={`${styles.errorMessage} ${submitError ? styles.active : ""}`}>
+                    {submitError &&
+                        <>
+                            You've encountered a {submitError.toLowerCase()}.
+                            {submitError !== 'Already applied' && (
+                                <>
+                                    {" "} Please try again or click here to email us{" "}
+                                    <a href="mailto:cardiffautonomousracing@cardiff.ac.uk?subject=Team%20application&body=Hello,%20I%20would%20like%20to%20apply.">
+                                        cardiffautonomousracing@cardiff.ac.uk
+                                    </a>
+                                </>
+                            )}
+                        </>
+                    }
+                </small>
             </div>
         </div>
     )
