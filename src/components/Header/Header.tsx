@@ -5,9 +5,12 @@ import MobileHeader from './MobileHeader';
 import InstaLogo from '../../assets/images/icons/instagramWhite.svg'
 import LinkedinLogo from '../../assets/images/icons/linkedinWhite.svg'
 import { Link } from 'react-router-dom';
+import handleSameClick from '../../utils/handleSameClick';
+import { useLocation } from 'react-router-dom';
 
 function Header () {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+    const location = useLocation();
 
     useEffect(() => {
         const handleResize = () => {
@@ -27,11 +30,11 @@ function Header () {
             <nav className={styles.nav}>
                 <img className = {styles.teamLogo} src={TeamLogo} alt="Cardiff University Team Logo" />
                 <div className={styles.links}>
-                    <Link to='/'>Home</Link>
-                    <Link to='/teamhistory'>Team History</Link>
-                    <Link to='/gallery'>Gallery</Link>
-                    <Link to='/sponsorship'>Sponsorship</Link>
-                    <Link to='/contact'>Contact</Link>
+                    <Link to='/' onClick={(e) => handleSameClick(e, location, '/')}>Home</Link>
+                    <Link to='/teamhistory' onClick={(e) => handleSameClick(e, location, '/teamhistory')}>Team History</Link>
+                    <Link to='/gallery' onClick={(e) => handleSameClick(e, location, '/gallery')}>Gallery</Link>
+                    <Link to='/sponsorship' onClick={(e) => handleSameClick(e, location, '/sponsorship')} >Sponsorship</Link>
+                    <Link to='/contact' onClick={(e) => handleSameClick(e, location, '/contact')}>Contact</Link>
                 </div>
                 <div className={styles.logos}>
                     <a href="https://www.instagram.com/cardiff_autonomous_racing/" target="_blank" rel="noopener noreferrer">

@@ -129,7 +129,7 @@ function Hero () {
                             to the team.
                         </p>
                     </section>
-                    <section className={styles.applySection}>
+                    <section id='join' className={styles.applySection}>
                         <h2>How do I get involved?</h2>
                         <p>Enter your Cardiff University email and we'll be in touch</p>
                         <ApplyForm/>
