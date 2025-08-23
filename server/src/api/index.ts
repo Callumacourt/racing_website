@@ -9,6 +9,7 @@ import { sendContactEmail, sendSponsorEmail } from '../../services/emailService'
 import helmet from 'helmet';
 import { sendDailyDigest } from './digest'; 
 import { addDailyApplication, resetDailyApplications } from './daily';
+import rateLimit from 'express-rate-limit';
 
 const app = express();
 app.use(helmet());
@@ -16,6 +17,16 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json({limit: '15kb'}));
 export const prisma = new PrismaClient();
+
+const formLimiter = rateLimit({
+  windowMs: 60 * 1000, 
+  max: 2, // Only 2 requests per minute per IP
+  message: { success: false, error: 'Too many requests, please try again later.' },
+});
+
+
+app.use('/api/contact', formLimiter);
+app.use('/api/sponsor', formLimiter);
 
 app.post('/api/contact', async (req, res) => {
     try {
