@@ -1,3 +1,4 @@
+import { PrismaClient } from '@prisma/client'
 import { configDotenv } from 'dotenv';
 configDotenv();
 import express from 'express';
@@ -7,7 +8,6 @@ import { validateEmail } from '../../utils/validators';
 import { sendContactEmail, sendSponsorEmail } from '../../services/emailService';
 import helmet from 'helmet';
 import { sendDailyDigest } from './digest'; 
-import { addToMemory, isInMemory } from './memory';
 import { addDailyApplication, resetDailyApplications } from './daily';
 
 const app = express();
@@ -15,6 +15,7 @@ app.use(helmet());
 
 app.use(cors());
 app.use(express.json({limit: '15kb'}));
+export const prisma = new PrismaClient();
 
 app.post('/api/contact', async (req, res) => {
     try {
@@ -87,14 +88,14 @@ app.post('/api/apply', async (req, res) => {
       return res.status(400).json({ success: false, error: 'Invalid email format' });
     }
 
-    // Reject if email in stored memory
-    if (await isInMemory(email) === true) {
+    const alreadyApplied = await prisma.application.findUnique({ where: { email }})
+    if (alreadyApplied) {
       return res.status(400).json({ success: false, error: 'Already applied' })
     }
 
     // Append to daily applications for daily digest and record memory
     addDailyApplication(email, new Date().toISOString());
-    addToMemory(email);
+    await prisma.application.create({ data: { email } });
 
     res.status(200).json({ success: true, message: 'Email stored for digest' });
     console.log('Email stored for digest')
