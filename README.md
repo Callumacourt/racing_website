@@ -1,12 +1,19 @@
-Cardiff Autonomous Racing's Website
+**Cardiff Autonomous Racing Team Website**
 
-# -- Updating Gallery Images --#
+A Full stack project using Vite + React, Node.js, and PostgreSQL.
+Handles team and sponsorship applications, as well as contact enquiries for Cardiff University's autonomous racing team. 
 
-If you are adding images to the gallery, you can simply place them in the src/assets/team/gallery folder
-but make sure you add an alt text to the manifest.json file in components/gallery referencing the filename
+Live site:
 
-i.e.
+https://racing-website.onrender.com
 
-"new_file" : {
-    "alt": "your alt message"
-}
+Updating Gallery Images
+
+1 - Place your image in src/assets/images/team/gallery/
+
+2 - Add alt text and optionally an attribution link to manifest.json 
+
+`i.e. "new_file": {
+  "alt": "your alt message",
+  "link": "imglinkblahblah.com"
+}`
