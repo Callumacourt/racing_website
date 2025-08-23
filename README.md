@@ -1,8 +1,10 @@
 **Cardiff Autonomous Racing Team Website**
+
 A Full stack project using Vite + React, Node.js, and PostgreSQL.
 Handles team and sponsorship applications, as well as contact enquiries for Cardiff University's autonomous racing team. 
 
 Live site:
+
 https://racing-website.onrender.com
 
 Updating Gallery Images
