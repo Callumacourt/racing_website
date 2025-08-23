@@ -1,11 +1,14 @@
 import Attribution from '../Attribution/Attribution'
 import styles from './image.module.css'
-import {motion} from 'motion/react'
+import { motion } from 'motion/react'
+import { useState } from 'react'
 
 export function Image (
     {handleImageClick, id, sizes, alt, link} : 
     {handleImageClick : (id : string) => void, id: string, sizes: Record<string, string>, alt: string, link?: string}) {
-    
+
+    const [loading, setLoading] = useState(true);
+
     return (
         <div className={styles.imgContainer}>
             <picture>
@@ -24,8 +27,15 @@ export function Image (
                     alt={alt}
                     layoutId={id}
                     loading="lazy"
+                    onLoad={() => setLoading(false)}
+                    className={styles.galleryImg}
                 />
             </picture>
+            {loading && (
+                <div className={styles.loadingOverlay}>
+                    <div className={styles.spinner}></div>
+                </div>
+            )}
             {link && (<Attribution link={link}/>)}
         </div>
     )

@@ -89,19 +89,19 @@ function ApplyForm() {
                     {error}
                 </small>
                 <small className={`${styles.errorMessage} ${submitError ? styles.active : ""}`}>
-                    {submitError &&
+                    {submitError && (
                         <>
-                            {submitError.toLowerCase()}.
+                            {submitError}
                             {submitError !== 'Already applied' && (
                                 <>
-                                    {" "} Please try again or click here to email us{" "}
+                                    {", please try again or click here to email us. "}
                                     <a href="mailto:cardiffautonomousracing@cardiff.ac.uk?subject=Team%20application&body=Hello,%20I%20would%20like%20to%20apply.">
                                         cardiffautonomousracing@cardiff.ac.uk
                                     </a>
                                 </>
                             )}
                         </>
-                    }
+                    )}
                 </small>
             </div>
         </div>

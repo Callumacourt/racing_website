@@ -8,6 +8,7 @@ import working from '../../assets/images/team/gallery/working.jpg'
 import working2 from '../../assets/images/team/gallery/working2.jpg';
 import recruitment from '../../assets/images/team/gallery/recruitment.jpg'
 import teamphoto from '../../assets/images/team/gallery/bigTeam.jpg';
+import Attribution from '../Attribution/Attribution';
 
 
 function TeamHistory() {
@@ -101,6 +102,7 @@ function TeamHistory() {
                             </div>
                             <div className={styles.imgContainer}>
                                 <img src={teamphoto} alt="Competition at Silverstone" />
+                                <Attribution link={'"https://www.flickr.com/photos/fsuk/albums/72177720327624335/with/54665933635"'}/>
                             </div>
                         </div>
                     </section>

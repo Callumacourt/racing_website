@@ -2,6 +2,10 @@
     position: relative;
 }
 
+.loadingOverlay {
+    min-height: 200px;
+}
+
 .imgContainer img {
     break-inside: avoid;
     margin-bottom: 1vw;
