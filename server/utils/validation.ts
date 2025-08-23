@@ -1,15 +1,27 @@
 import { validateEmail, validateRequiredFields, validateMobile, validateStringLength, validateName, sanitiseInput, validateInputTypes } from './validators';
+
+/**
+ * Result object for validation functions.
+ * - isValid: true if validation passes, false otherwise.
+ * - error: error message if validation fails.
+ */
 interface ValidationResult {
   isValid: boolean;
   error?: string;
 }
 
+/**
+ * Sanitised contact form data structure.
+ */
 interface SanitisedContactData {
   fullname: string;
   email: string;
   message: string;
 }
 
+/**
+ * Sanitised sponsor form data structure.
+ */
 interface SanitisedSponsorData {
   companyName: string;
   contactName: string;
@@ -17,10 +29,15 @@ interface SanitisedSponsorData {
   contactNumber: string;
 }
 
-// SANITISATION FUNCTIONS
+// ------------------- SANITISATION FUNCTIONS -------------------
+
+/**
+ * Sanitises contact form data by trimming and removing unwanted characters.
+ * @param body - Raw request body from the contact form.
+ * @returns SanitisedContactData
+ */
 export function sanitiseContactData(body: any): SanitisedContactData {
   const { fullname, email, message } = body;
-  
   return {
     fullname: sanitiseInput(fullname),
     email: sanitiseInput(email),
@@ -28,9 +45,13 @@ export function sanitiseContactData(body: any): SanitisedContactData {
   };
 }
 
+/**
+ * Sanitises sponsor form data by trimming and removing unwanted characters.
+ * @param body - Raw request body from the sponsor form.
+ * @returns SanitisedSponsorData
+ */
 export function sanitiseSponsorData(body: any): SanitisedSponsorData {
   const { companyName, contactName, contactEmail, contactNumber } = body;
-  
   return {
     companyName: sanitiseInput(companyName),
     contactName: sanitiseInput(contactName),
@@ -39,7 +60,14 @@ export function sanitiseSponsorData(body: any): SanitisedSponsorData {
   };
 }
 
-// VALIDATION FUNCTIONS
+// ------------------- VALIDATION FUNCTIONS -------------------
+
+/**
+ * Validates sanitised contact form data.
+ * Checks required fields, string lengths, and formats.
+ * @param data - SanitisedContactData
+ * @returns ValidationResult
+ */
 export function validateContactData(data: SanitisedContactData): ValidationResult {
   // Required fields
   const validationError = validateRequiredFields(data, ['fullname', 'email', 'message']);
@@ -51,7 +79,6 @@ export function validateContactData(data: SanitisedContactData): ValidationResul
   if (!validateStringLength(data.fullname, 50)) {
     return { isValid: false, error: 'Name too long' };
   }
-
   if (!validateStringLength(data.message, 1000)) {
     return { isValid: false, error: 'Message too long' };
   }
@@ -60,7 +87,6 @@ export function validateContactData(data: SanitisedContactData): ValidationResul
   if (!validateName(data.fullname)) {
     return { isValid: false, error: 'Invalid name format' };
   }
-
   if (!validateEmail(data.email)) {
     return { isValid: false, error: 'Invalid email format' };
   }
@@ -68,8 +94,13 @@ export function validateContactData(data: SanitisedContactData): ValidationResul
   return { isValid: true };
 }
 
+/**
+ * Validates sanitised sponsor form data.
+ * Checks required fields, string lengths, and formats.
+ * @param data - SanitisedSponsorData
+ * @returns ValidationResult
+ */
 export function validateSponsorData(data: SanitisedSponsorData): ValidationResult {
-  console.log(data)
   // Required fields
   const validationError = validateRequiredFields(data, ['companyName', 'contactName', 'contactEmail']);
   if (validationError) {
@@ -78,18 +109,14 @@ export function validateSponsorData(data: SanitisedSponsorData): ValidationResul
 
   // Length validation
   if (!validateStringLength(data.companyName, 100)) {
-    console.log('string too long')
     return { isValid: false, error: 'Company name too long' };
   }
 
   // Format validation
   if (!validateName(data.contactName)) {
-    console.log('name invalid')
     return { isValid: false, error: 'Invalid contact name' };
   }
-
   if (!validateEmail(data.contactEmail)) {
-    console.log('email invalid')
     return { isValid: false, error: 'Invalid email format' };
   }
 
@@ -101,7 +128,13 @@ export function validateSponsorData(data: SanitisedSponsorData): ValidationResul
   return { isValid: true };
 }
 
-// INPUT TYPE VALIDATION 
+// ------------------- INPUT TYPE VALIDATION -------------------
+
+/**
+ * Validates that the input body is an object with only string values.
+ * @param body - Raw request body
+ * @returns ValidationResult
+ */
 export function validateInput(body: any): ValidationResult {
   if (!body || typeof body !== 'object' || Array.isArray(body)) {
     return { isValid: false, error: 'Invalid input format' };

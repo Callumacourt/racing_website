@@ -6,10 +6,16 @@ import { useState } from 'react'
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
-function ContactForm () {
+/**
+ * Contact form component for user enquiries.
+ * Uses UseFormHandler for form state and validation.
+ * Submits data to the backend API ('/api/contact').
+ */
 
+function ContactForm () {
     const [submitError, setSubmitError] = useState(false);
 
+    // Handles form state, validation, and helpers
     const {
         formDetails,
         formErrors,
@@ -22,27 +28,28 @@ function ContactForm () {
         resetForm
     } = UseFormHandler(['fullName', 'email', 'message'])
 
+    /**
+     * Handles form submission:
+     * - Honeypot spam check
+     * - Validation
+     * - API call and error handling
+     */
     const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
-        if (submitError) {
-            setSubmitError(false)
-        }
+        if (submitError) setSubmitError(false);
 
+        // Honeypot field for spam prevention
         const honeyPot = (e.currentTarget.elements.namedItem('mobile') as HTMLInputElement | null)?.value || '';
-        if (honeyPot) {
-            return
-        }
+        if (honeyPot) return;
         
         if (validateForm()) {
-            setIsSubmitting(true)
+            setIsSubmitting(true);
 
             try {
                 const res = await fetch(`${apiUrl}/contact`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         fullname: formDetails.fullName,
                         email: formDetails.email,
@@ -58,7 +65,6 @@ function ContactForm () {
 
             } catch(error) {
                 setSubmitError(true)
-
             } finally {
                 setIsSubmitting(false)
                 resetForm()
@@ -67,62 +73,59 @@ function ContactForm () {
     }
 
     return (
-        <>
-        <form className = {styles.contactForm} onSubmit={handleSubmit} noValidate>
+        <form className={styles.contactForm} onSubmit={handleSubmit} noValidate>
             <span>
-            <div className={styles.inputWrapper}>
-            <FormInput
-                    name={'fullName'}
-                    label={'Full Name'}
-                    kind={'input'}
-                    type={'text'}
-                    value={formDetails.fullName}
-                    error = {formErrors.fullNameErr}
-                    onChange={handleFormChange}
-                    required={true}
-                />
-            </div>
-            
-            <div className = {styles.inputWrapper}>
-                <FormInput
-                    name={'email'}
-                    label={'Email'}
-                    kind={'input'}
-                    type={'email'}
-                    value={formDetails.email}
-                    error = {formErrors.emailErr}
-                    onChange={handleFormChange}
-                    required={true}
-                />
-            </div>
+                <div className={styles.inputWrapper}>
+                    <FormInput
+                        name={'fullName'}
+                        label={'Full Name'}
+                        kind={'input'}
+                        type={'text'}
+                        value={formDetails.fullName}
+                        error={formErrors.fullNameErr}
+                        onChange={handleFormChange}
+                        required={true}
+                    />
+                </div>
+                <div className={styles.inputWrapper}>
+                    <FormInput
+                        name={'email'}
+                        label={'Email'}
+                        kind={'input'}
+                        type={'email'}
+                        value={formDetails.email}
+                        error={formErrors.emailErr}
+                        onChange={handleFormChange}
+                        required={true}
+                    />
+                </div>
             </span>
 
+            {/* Honeypot field for spam prevention */}
             <input 
-            type="text" 
-            name="mobile"
-            style={{display: 'none'}}
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden = 'true'
+                type="text" 
+                name="mobile"
+                style={{display: 'none'}}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden='true'
             />
 
-            <div className = {styles.textAreaWrapper}>
-            <FormInput
-                name={'message'}
-                label={'Enquiry'}
-                type='text'
-                kind={'textarea'}
-                value={formDetails.message}
-                error = {formErrors.messageErr}
-                onChange={handleFormChange}
-                required={true}
-            />
+            <div className={styles.textAreaWrapper}>
+                <FormInput
+                    name={'message'}
+                    label={'Enquiry'}
+                    type='text'
+                    kind={'textarea'}
+                    value={formDetails.message}
+                    error={formErrors.messageErr}
+                    onChange={handleFormChange}
+                    required={true}
+                />
             </div>
-            <FormEnd submitError = {submitError} isSubmitting = {isSubmitting} hasSubmitted = {hasSubmitted}/>
+            <FormEnd submitError={submitError} isSubmitting={isSubmitting} hasSubmitted={hasSubmitted}/>
         </form>
-        </>
     )
-
 }
 
 export default ContactForm;

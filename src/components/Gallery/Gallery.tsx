@@ -6,6 +6,15 @@ import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import 'masonry-css';
 
+
+/**
+ * Displays a grid of images with responsive sources and opens an expanded modal on click.
+ * Uses framer-motion for animation and disables background scroll when modal is open.
+ */
+
+/**
+ * ImageData represents a gallery image with all available sizes and metadata.
+ */
 interface ImageData {
   id: string;
   sizes: Record<string, string>;
@@ -16,16 +25,20 @@ interface ImageData {
 const images: ImageData[] = loadImages;
 
 function Gallery() {
+  // Index (id) of currently expanded index
   const [expandedIndex, setExpandedIndex] = useState<string | null>(null);
 
+  // Opens expanded modal for the clicked image
   const handleImageClick = (index: string) => {
     setExpandedIndex(index);
   };
 
+  // Closes expanded model
   const onClose = () => {
     setExpandedIndex(null);
   };
 
+  // Get the data for the expanded image if there is any
   const expandedImgData = expandedIndex
     ? images.find((img) => img.id === expandedIndex) || null
     : null;

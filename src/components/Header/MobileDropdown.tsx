@@ -6,7 +6,8 @@ function MobileDropdown ({ setIsActive, isExiting } : {setIsActive : () => void,
     const dropdownClass = isExiting 
         ? `${styles.mobileDropdown} ${styles.mobileDropdownExit}`
         : styles.mobileDropdown
-
+    
+    // Close dropdown
     const handleLinkClick = () => {
         setIsActive()
     }

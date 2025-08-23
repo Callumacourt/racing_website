@@ -4,10 +4,17 @@ import FormEnd from '../Form/FormEnd';
 import UseFormHandler from "../../hooks/UseFormHandler";
 import { useState, FormEvent } from 'react';
 
+/**
+ * Sponsorship enquiry form component.
+ * Uses UseFormHandler for form state and validation.
+ * Submits sponsor applications to the backend API ('/api/sponsor').
+ */
+
 function SponsorForm() {
     const [submitError, setSubmitError] = useState(false);
     const apiUrl = import.meta.env.VITE_API_URL;
     
+    // Handles form state, validation, and helpers
     const {
         formDetails,
         formErrors,
@@ -20,17 +27,20 @@ function SponsorForm() {
         resetForm
     } = UseFormHandler(['companyName', 'contactName', 'contactEmail', 'contactNumber']);
 
+    /**
+     * Handles form submission:
+     * - Honeypot spam check
+     * - Validation
+     * - API call and error handling
+     */
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (submitError) {
-            setSubmitError(false);
-        }
+        if (submitError) setSubmitError(false);
 
+        // Honeypot field for spam prevention
         const honeyPot = (e.currentTarget.elements.namedItem('companyWebsite') as HTMLInputElement)?.value;
-        if (honeyPot) {
-            return;
-        }
+        if (honeyPot) return;
 
         if (validateForm(['companyName', 'contactName', 'contactEmail'])) {
             setIsSubmitting(true);
@@ -38,9 +48,7 @@ function SponsorForm() {
             try {
                 const res = await fetch(`${apiUrl}/sponsor`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         companyName: formDetails.companyName,
                         contactName: formDetails.contactName,
@@ -78,7 +86,6 @@ function SponsorForm() {
                     kind="input"
                 />
             </div>
-
             <div className={styles.inputWrapper}>
                 <FormInput
                     name="contactName"
@@ -91,7 +98,6 @@ function SponsorForm() {
                     kind="input"
                 />
             </div>
-
             <div className={styles.inputWrapper}>
                 <FormInput
                     name="contactEmail"
@@ -104,7 +110,6 @@ function SponsorForm() {
                     kind="input"
                 />
             </div>
-
             <div className={styles.inputWrapper}>
                 <FormInput
                     name="contactNumber"
@@ -118,6 +123,7 @@ function SponsorForm() {
                 />
             </div>
 
+            {/* Honeypot field for spam prevention */}
             <input
                 type="text"
                 name="companyWebsite"

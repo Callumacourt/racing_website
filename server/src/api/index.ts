@@ -12,22 +12,27 @@ import { addDailyApplication, resetDailyApplications } from './daily';
 import rateLimit from 'express-rate-limit';
 
 const app = express();
-app.use(helmet());
+app.use(helmet()); // Security headers
 
 app.use(cors());
-app.use(express.json({limit: '15kb'}));
+app.use(express.json({limit: '15kb'})); // Limit JSON body size
 export const prisma = new PrismaClient();
 
+// Rate limiter for form endpoints 
 const formLimiter = rateLimit({
   windowMs: 60 * 1000, 
   max: 2, // Only 2 requests per minute per IP
   message: { success: false, error: 'Too many requests, please try again later.' },
 });
 
-
 app.use('/api/contact', formLimiter);
 app.use('/api/sponsor', formLimiter);
 
+/**
+ * Contact form endpoint.
+ * - Validates and sanitises input.
+ * - Sends contact email via email service.
+ */
 app.post('/api/contact', async (req, res) => {
     try {
         // Validate input types
@@ -55,6 +60,11 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
+/**
+ * Sponsorship enquiry endpoint.
+ * - Validates and sanitises input.
+ * - Sends sponsor email via email service.
+ */
 app.post('/api/sponsor', async (req, res) => {
     try {
         // Validate input types
@@ -84,27 +94,33 @@ app.post('/api/sponsor', async (req, res) => {
     }
 });
 
+/**
+ * Team application endpoint.
+ * - Validates input and email format.
+ * - Checks for duplicate applications.
+ * - Stores valid applications for daily digest.
+ */
 app.post('/api/apply', async (req, res) => {
-  // Validate types
   try {
+    // Validate types
     const typeValidation = validateInput(req.body);
     if (!typeValidation.isValid) {
       return res.status(400).json({ success: false, error: typeValidation.error });
     }
 
-    // Validate email format
+    // Validate email format (must be Cardiff University email)
     const email = req.body.email;
-
     if (!validateEmail(email) || (!/^[A-Za-z0-9._%+-]+@cardiff\.ac\.uk$/i.test(email))) {
       return res.status(400).json({ success: false, error: 'Invalid email format' });
     }
 
+    // Check for duplicate application
     const alreadyApplied = await prisma.application.findUnique({ where: { email }})
     if (alreadyApplied) {
       return res.status(400).json({ success: false, error: 'Already applied' })
     }
 
-    // Append to daily applications for daily digest and record memory
+    // Append to daily applications for daily digest and record in DB
     addDailyApplication(email, new Date().toISOString());
     await prisma.application.create({ data: { email } });
 
@@ -117,6 +133,11 @@ app.post('/api/apply', async (req, res) => {
   }
 });
 
+/**
+ * Daily digest endpoint.
+ * - Protected by secret query parameter.
+ * - Triggers sending of the daily digest email.
+ */
 app.post('/api/digest', async (req, res) => {
     if (req.query.secret !== process.env.DIGEST_SECRET) {
         return res.status(403).json({ error: 'Forbidden' });

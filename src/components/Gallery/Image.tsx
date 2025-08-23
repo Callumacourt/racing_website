@@ -3,6 +3,15 @@ import styles from './image.module.css'
 import { motion } from 'motion/react'
 import { useState } from 'react'
 
+/**
+ * 
+ * @param handleImageClick - Function used for image expansion on click
+ * @param id - Name of image file without size or file type
+ * @param sizes - Object of image size name and the image for that size used for responsiveness
+ * @param alt -  Alt value of the image
+ * @param link - Link to the attribution source of an image - if needed
+ * @returns JSX for an image used in the gallery
+ */
 export function Image (
     {handleImageClick, id, sizes, alt, link} : 
     {handleImageClick : (id : string) => void, id: string, sizes: Record<string, string>, alt: string, link?: string}) {

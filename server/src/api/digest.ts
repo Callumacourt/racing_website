@@ -3,6 +3,8 @@ import { resetDailyApplications, loadDailyApplications } from './daily';
 
 const resend = new Resend(process.env.resendKey);
 
+// Run daily with CRON job
+
 export async function sendDailyDigest() {
     // Load all daily applications from the database
     const data = await loadDailyApplications();
@@ -11,6 +13,7 @@ export async function sendDailyDigest() {
 
     const listHtml = data.map(e => `<li>${e.email}</li>`).join('');
 
+    // Send digest with all applications for the day 
     await resend.emails.send({
         from: 'onboarding@resend.dev',
         to: process.env.email_to ?? '',

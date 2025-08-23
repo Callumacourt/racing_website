@@ -11,6 +11,7 @@ function Footer () {
     const navigate = useNavigate();
     const location = useLocation();
 
+    // Handles navigating to the 'join the team' section
     const handleJoinClick = (e: React.MouseEvent) => {
         e.preventDefault();
         if (location.pathname === "/") {

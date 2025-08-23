@@ -12,11 +12,13 @@ function Header () {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const location = useLocation();
 
+    // Determine whether user is on mobile or desktop sizing
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 768);
         };
-
+        
+        // Listen for resizing
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
