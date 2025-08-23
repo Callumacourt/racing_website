@@ -3,21 +3,30 @@ import styles from './image.module.css'
 import {motion} from 'motion/react'
 
 export function Image (
-    {handleImageClick, id, src, alt, link} : 
-    {handleImageClick : (id : string) => void, id: string, src: string, alt: string, link?: string}) {
+    {handleImageClick, id, sizes, alt, link} : 
+    {handleImageClick : (id : string) => void, id: string, sizes: Record<string, string>, alt: string, link?: string}) {
     
     return (
-        <>
         <div className={styles.imgContainer}>
-            <motion.img 
-                onClick={() => handleImageClick(id)} 
-                src={src} 
-                alt={alt}
-                layoutId = {id}
-            />
-            {/* Attribution required images have a link vaue in json */}
+            <picture>
+                {sizes['1200'] && (
+                    <source srcSet={sizes['1200']} media="(min-width: 1200px)" />
+                )}
+                {sizes['800'] && (
+                    <source srcSet={sizes['800']} media="(min-width: 800px)" />
+                )}
+                {sizes['400'] && (
+                    <source srcSet={sizes['400']} media="(min-width: 400px)" />
+                )}
+                <motion.img 
+                    onClick={() => handleImageClick(id)} 
+                    src={sizes['original'] || sizes['1200'] || sizes['800'] || sizes['400']} 
+                    alt={alt}
+                    layoutId={id}
+                    loading="lazy"
+                />
+            </picture>
             {link && (<Attribution link={link}/>)}
         </div>
-        </>
     )
 }

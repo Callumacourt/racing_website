@@ -11,29 +11,28 @@ interface ImageMetadata {
     };
 }
 
-const imageModules = import.meta.glob('../../assets/images/team/gallery/*', { eager: true }) as Record<string, ImageModule>
-const seenIds = new Set<string>();
+const imageModules = import.meta.glob('../../assets/images/team/gallery/*', { eager: true }) as Record<string, ImageModule>;
 
-const loadImages = Object.entries(imageModules).map(([path, module]) => {
-    const id = path.split('/').pop()?.split('.')[0] || '';
-    
-    if (id.startsWith('big')) {
-        seenIds.add(id.slice(3));
-    }
+// Group images by base name and collect all sizes
+const imageGroups: { [base: string]: { [size: string]: string } } = {};
 
-    return {
-        id: id,
-        img: module.default,
-        alt: (imageMetadata as ImageMetadata)[id]?.alt || `Image ${id}`,
-        link: (imageMetadata as ImageMetadata)[id]?.link
-    }
-    // Only use the big version of duplicate images
-    }).filter(image => {
-        if (seenIds.has(image.id)) {
-            return image.id.startsWith('big');
-        }
-        return true
-    })
+Object.entries(imageModules).forEach(([path, module]) => {
+    const fileName = path.split('/').pop() || '';
+    // Match: baseName + optional size + extension
+    const match = fileName.match(/^([a-zA-Z0-9]+?)(\d{3,4})?\.([a-z]+)$/);
+    if (!match) return;
+    const base = match[1];
+    const size = match[2] || 'original';
+    if (!imageGroups[base]) imageGroups[base] = {};
+    imageGroups[base][size] = module.default;
+});
+
+const loadImages = Object.entries(imageGroups).map(([base, sizes]) => ({
+    id: base,
+    sizes,
+    alt: (imageMetadata as ImageMetadata)[base]?.alt || `Image ${base}`,
+    link: (imageMetadata as ImageMetadata)[base]?.link
+}));
 
 export default loadImages;
 

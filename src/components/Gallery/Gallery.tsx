@@ -8,7 +8,7 @@ import 'masonry-css';
 
 interface ImageData {
   id: string;
-  img: string;
+  sizes: Record<string, string>;
   alt: string;
   link?: string;
 }
@@ -38,9 +38,9 @@ function Gallery() {
             handleImageClick={handleImageClick}
             id={image.id}
             key={image.id}
-            src={image.img}
+            sizes={image.sizes}
             alt={image.alt}
-            link = {image.link}
+            link={image.link}
           />
         ))}
       </section>
@@ -48,7 +48,12 @@ function Gallery() {
       <AnimatePresence>
         {expandedImgData && (
           <ExpandedImg
-            src={expandedImgData.img}
+            src={
+              expandedImgData.sizes['1200'] ||
+              expandedImgData.sizes['800'] ||
+              expandedImgData.sizes['400'] ||
+              expandedImgData.sizes['original']
+            }
             key={expandedImgData.id}
             alt={expandedImgData.alt}
             id={expandedImgData.id}
