@@ -91,7 +91,7 @@ function ApplyForm() {
                 <small className={`${styles.errorMessage} ${submitError ? styles.active : ""}`}>
                     {submitError &&
                         <>
-                            You've encountered a {submitError.toLowerCase()}.
+                            {submitError.toLowerCase()}.
                             {submitError !== 'Already applied' && (
                                 <>
                                     {" "} Please try again or click here to email us{" "}

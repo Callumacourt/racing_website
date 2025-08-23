@@ -18,17 +18,7 @@ function FormEnd ({
               <a href="mailto:callumacourtt@gmail.com?subject=sponsorEnquiry">cardiffautonomousracing@cardiff.ac.uk</a>
             </div>
           </>
-         <button 
-            className = {styles.submitBtn}
-            aria-label="Form submit" 
-            type="submit"
-            disabled = {isSubmitting}
-          >
-          {isSubmitting ? <div className = {styles.spinner} aria-label="Loading.."></div> : 'Submit'}
-          </button>
-    
-          <>     
-              {hasSubmitted && (
+                        {hasSubmitted && (
                 <div className={styles.successMessage}>
                   <svg 
                     className={styles.checkIcon}
@@ -49,6 +39,16 @@ function FormEnd ({
                   <span className = {styles.thankYouText}>Thank you! We'll be in touch soon.</span>
                 </div>
               )}
+         <button 
+            className = {styles.submitBtn}
+            aria-label="Form submit" 
+            type="submit"
+            disabled = {isSubmitting}
+          >
+          {isSubmitting ? <div className = {styles.spinner} aria-label="Loading.."></div> : 'Submit'}
+          </button>
+    
+          <>     
             </>
         </>
     )

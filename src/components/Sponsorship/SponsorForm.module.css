@@ -9,9 +9,9 @@
 }
 
 .sponsorForm button {
-    grid-row: 6;
+    grid-row: 7;
     width: 90%;
-    justify-self: center;
+    justify-self: c7enter;
 }
 
 .inputWrapper:nth-child(4) {
@@ -39,6 +39,7 @@
 
 .inputWrapper input {
     justify-self: center;
+    text-align: center;
     margin-top: 1vh;
 }
 
@@ -62,7 +63,7 @@
 
     .sponsorForm button {
         width: 75%;
-        margin-top: 0px;
+        margin-top: 1.5rem
     }
 }
 

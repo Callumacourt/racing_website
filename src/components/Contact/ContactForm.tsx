@@ -118,7 +118,6 @@ function ContactForm () {
                 required={true}
             />
             </div>
-
             <FormEnd submitError = {submitError} isSubmitting = {isSubmitting} hasSubmitted = {hasSubmitted}/>
         </form>
         </>
