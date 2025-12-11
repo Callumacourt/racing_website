@@ -25,3 +25,14 @@ export async function sendDailyDigest() {
     await resetDailyApplications();
 }
 
+if (require.main === module) {
+    sendDailyDigest()
+        .then(() => {
+            console.log('Digest sent successfully');
+            process.exit(0);
+        })
+        .catch((e) => {
+            console.error('Failed to send digest:', e);
+            process.exit(1);
+        });
+}
