@@ -46,7 +46,7 @@ function SponsorForm() {
             setIsSubmitting(true);
 
             try {
-                const res = await fetch(`${apiUrl}/sponsor`, {
+                const res = await fetch(`${apiUrl}/api/sponsor`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

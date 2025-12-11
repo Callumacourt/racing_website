@@ -5,6 +5,9 @@ yarn-error.log*
 
 # Production builds
 dist/
+!dist/
+dist/** 
+!dist/index.html
 build/
 
 # Environment variables
